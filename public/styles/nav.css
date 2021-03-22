@@ -4,8 +4,14 @@ nav {
   color: #ffffff;
   background-color: #4056a1;
   padding: 1.5em;
+  display: flex;
+  justify-content: space-between;
 }
 
-nav span {
+nav > span:first-child {
   font-family: "Bungee", sans-serif;
+}
+
+nav strong {
+  align-content: flex-end;
 }
