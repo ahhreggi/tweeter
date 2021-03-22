@@ -52,12 +52,11 @@
       <section class="new-tweet">
         <form method="POST" action="/tweets/">
           <label for="tweet-text">What are you humming about?</label>
-          <!-- Use div contenteditable with JS to extract/send values -->
-          <textarea name="text" id="tweet-text">You have to sort of plan these clouds. It's time we got strong here. I don't know exactly what they are, and I don't really care at this point.</textarea>
-          <div class="tweet-footer">
+          <textarea name="text" id="tweet-text" rows="1" maxlength="140"></textarea>
+          <footer>
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
+          </footer>
         </form>
       </section>
 
