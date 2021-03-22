@@ -18,10 +18,6 @@ nav > span:nth-child(2) {
   flex-direction: column;
 }
 
-nav strong {
-  align-content: flex-end;
-}
-
 .fas-arrow {
   filter: invert(100%);
   height: 25px;
