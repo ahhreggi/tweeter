@@ -34,9 +34,3 @@ main {
   flex-direction: column;
   justify-content: flex-;
 }
-
-.bobross {
-  border: 4px solid rgb(65, 65, 65);
-  margin: 15px 5px;
-  padding: 25px;
-}
