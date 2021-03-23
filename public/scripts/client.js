@@ -1,10 +1,6 @@
 $(document).ready(() => {
 
-  // $(".new-tweet button").on("click", function() {
-  //   const tweetMsg = $("#tweet-text").html();
-  //   $("#hidden").val(tweetMsg);
-  // })
-
+  // Toggle the visibility of the user's @handle on hover
   $(".tweet").on("mouseenter", function() {
 
     const handle = $(this).find(".handle");

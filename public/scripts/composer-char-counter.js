@@ -1,6 +1,8 @@
 $(document).ready(() => {
 
+  // Dynamically update counter and button styles as a user types a tweet
   $("#tweet-text-input").on("input", function() {
+
     const tweetMsg = $(this).html();
     const charsLeft = 140 - tweetMsg.length;
     const counter = $(this).parent().find(".counter");
@@ -17,7 +19,7 @@ $(document).ready(() => {
 
     // Enable/disable submit button
     const tweetBtn = $(counter).siblings("button");
-    
+
     if (charsLeft < 0 || charsLeft >= 140) {
       tweetBtn.prop("disabled", true);
       tweetBtn.addClass("btn-disable");
@@ -27,5 +29,5 @@ $(document).ready(() => {
     }
 
   });
-  
+
 });
