@@ -6,13 +6,25 @@
 
 .tweet header {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  height: 100px;
+  align-items: center;
+  height: 50px;
+  border: 1px solid red;
 }
 
-.tweet header img {
-  height: 40px;
+.tweet .author {
+  display: flex;
+  align-items: center;
+}
+
+.tweet .author img {
+  height: 50px;
+  margin-right: 15px;
+  filter: invert(30%);
+}
+
+.tweet .handle {
+  color: rgb(175, 188, 202);
 }
 
 .tweet footer img {
