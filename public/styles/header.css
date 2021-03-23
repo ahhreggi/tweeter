@@ -1,4 +1,4 @@
-header {
+#profile-header {
   height: 400px;
   width: 100%;
   display: flex;
@@ -10,7 +10,7 @@ header {
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
 }
 
-header > div {
+#profile-header > div {
   width: 30%;
   margin-bottom: 10px;
   display: flex;
