@@ -5,10 +5,9 @@
 }
 
 .tweet:hover {
-  background-color: #f8f7f5;
+  background-color: #f5f3ee;
   box-shadow: 8px 8px rgb(175, 188, 202);
   color: rgb(29, 29, 29);
-  margin: 23px 5px 27px 5px;
 }
 
 .tweet header {
@@ -44,10 +43,15 @@
   height: 16px;
   margin: 5px;
   filter: invert() hue-rotate(45deg) saturate(30%) brightness(70%);
+  cursor: pointer;
 }
 
 .tweet:hover footer img {
   filter: invert() hue-rotate(45deg) saturate(30%) brightness(50%);
+}
+
+.tweet:hover footer img:hover {
+  filter: invert() hue-rotate(45deg) saturate(100%) brightness(70%);
 }
 
 .tweet p {
