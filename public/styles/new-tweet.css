@@ -37,12 +37,12 @@
   transition: 0.1s;
 }
 
-.new-tweet button:hover {
-  background-color: #506bc7;
-}
-
 .new-tweet button:active {
   background-color: #374a8b;
+}
+
+.new-tweet button:hover {
+  background-color: #506bc7;
 }
 
 .new-tweet .btn-disable,
@@ -53,14 +53,14 @@
   cursor: default;
 }
 
-.counter {
-  font-family: "Bungee", sans-serif;
-  color: rgb(65, 65, 65);
-  font-size: 20px;
-}
-
 .new-tweet footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.counter {
+  font-family: "Bungee", sans-serif;
+  color: rgb(65, 65, 65);
+  font-size: 20px;
 }
