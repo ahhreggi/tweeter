@@ -1,6 +1,6 @@
-#tweet-text,
-#tweet-text:active,
-#tweet-text:focus {
+#tweet-text-input,
+#tweet-text-input:active,
+#tweet-text-input:focus {
   background-color: #f4f1ec;
   font-size: 18px;
   color: rgb(65, 65, 65);
@@ -11,6 +11,11 @@
   border: none;
   border-bottom: 4px solid rgb(65, 65, 65);
   resize: none;
+}
+
+#tweet-text {
+  display: none;
+  visibility: hidden;
 }
 
 .new-tweet {
@@ -39,14 +44,18 @@
   background-color: #374a8b;
 }
 
+.new-tweet .btn-disable,
+.new-tweet .btn-disable:hover,
+.new-tweet .btn-disable:active {
+  background-color: #4056a1;
+  opacity: 0.5;
+  cursor: default;
+}
+
 .counter {
   font-family: "Bungee", sans-serif;
   color: rgb(65, 65, 65);
   font-size: 20px;
-}
-
-.counter-limit {
-  color: red;
 }
 
 .new-tweet footer {

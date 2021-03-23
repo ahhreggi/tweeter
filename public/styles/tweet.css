@@ -1,7 +1,14 @@
 .tweet {
   border: 4px solid rgb(65, 65, 65);
-  margin: 15px 5px;
+  margin: 25px 5px;
   padding: 25px;
+  transition: 0.2s;
+}
+
+.tweet:hover {
+  background-color: #f8f7f5;
+  box-shadow: 8px 8px rgb(175, 188, 202);
+  color: rgb(29, 29, 29);
 }
 
 .tweet header {
@@ -17,11 +24,11 @@
 .tweet .author img {
   height: 50px;
   margin-right: 15px;
-  filter: invert(20%);
 }
 
 .tweet .handle {
   color: rgb(175, 188, 202);
+  visibility: hidden;
 }
 
 .tweet footer {

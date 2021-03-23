@@ -42,7 +42,7 @@
     <!-- Profile header -->
     <header id="profile-header">
       <div>
-          <img src="/images/profile-hex.png" /> 
+          <img src="/images/bobross.png" /> 
       </div>
       <div>
           <span><strong>Bob</strong> Ross</span>
@@ -55,6 +55,7 @@
       <section class="new-tweet">
         <form method="POST" action="/tweets/">
           <label for="tweet-text">What are you humming about?</label>
+          <div contenteditable name="text" id="tweet-text-input" rows="1"></div>
           <textarea name="text" id="tweet-text" rows="1"></textarea>
           <footer>
             <button type="submit">Tweet</button>
@@ -70,7 +71,7 @@
         <article class="tweet">
           <header>
             <span class="author">
-              <img src="/images/users/granny.png" alt="profile picture" />
+              <img src="/images/bobross.png" alt="profile picture" />
               Bob Ross
             </span>
             <span class="handle">
