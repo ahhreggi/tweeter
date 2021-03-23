@@ -12,21 +12,30 @@
   border: 1px solid red;
 }
 
+.tweet img {
+  height: 50px;
+  margin-right: 15px;
+  filter: invert(20%);
+}
+
 .tweet .author {
   display: flex;
   align-items: center;
-}
-
-.tweet .author img {
-  height: 50px;
-  margin-right: 15px;
-  filter: invert(30%);
 }
 
 .tweet .handle {
   color: rgb(175, 188, 202);
 }
 
+.tweet footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .tweet footer img {
-  height: 20px;
+  height: 16px;
+  margin: 0;
 }
