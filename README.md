@@ -2,12 +2,10 @@
 <div align="center">
 <img src="public/images/bobross.png" alt="tweeter" width="150px">
 <p>
-<h2>Tweeter</h2>
+<h1>Tweeter</h1>
 A simple, single-page Twitter clone ft. Bob Ross... <i>let's get crazy.</i> :)
 </p>
 </div>
-
-<hr>
 
 <!-- INSTALLATION -->
 
