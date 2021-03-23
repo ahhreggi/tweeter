@@ -45,6 +45,10 @@
   font-size: 20px;
 }
 
+.counter-limit {
+  color: red;
+}
+
 .new-tweet footer {
   display: flex;
   align-items: center;
