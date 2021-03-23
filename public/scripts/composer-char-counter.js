@@ -6,22 +6,26 @@ $(document).ready(() => {
     const counter = $(this).parent().find(".counter");
     counter.html(charsLeft);
 
-    // Store message in hidden textarea element
+    // Store message from div into hidden textarea element
     $("#tweet-text").val(tweetMsg);
-    // console.log($("#tweet-text").val(tweetMsg))
 
-    // Enable/disable button
+    if (charsLeft >= 0) {
+      counter.css("color", "rgb(65, 65, 65)");
+    } else {
+      counter.css("color", "red");
+    }
+
+    // Enable/disable submit button
     const tweetBtn = $(counter).siblings("button");
     
-    if (charsLeft < 0) {
-      counter.css("color", "red");
+    if (charsLeft < 0 || charsLeft >= 140) {
       tweetBtn.prop("disabled", true);
       tweetBtn.addClass("btn-disable");
     } else {
-      counter.css("color", "rgb(65, 65, 65)");
       tweetBtn.prop("disabled", false);
       tweetBtn.removeClass("btn-disable");
     }
+
   });
   
 });
