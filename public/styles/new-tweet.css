@@ -19,7 +19,8 @@
 }
 
 .new-tweet {
-  padding: 15px;
+  margin-top: 15px;
+  padding: 15px 35px;
 }
 
 .new-tweet button {
