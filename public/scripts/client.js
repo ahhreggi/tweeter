@@ -1,26 +1,88 @@
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-    "handle": "@SirIsaac"
-  },
-  "content": {
-    "text": "If I have seen further it is by standing on the shoulders of giants"
-  },
-  "created_at": 1461116232227 // milliseconds
-};
-
 const data = [
-  tweetData,
-  tweetData,
-  tweetData
+  {
+    "user": {
+      "name": "Bob Ross",
+      "avatars": "../images/bobross.png",
+      "handle": "@BobRoss"
+    },
+    "content": {
+      "text": "Tell you what: let's get crazy today. "
+    },
+    "created_at": 1616613010000
+  },
+  {
+    "user": {
+      "name": "Bob Ross",
+      "avatars": "../images/bobross.png",
+      "handle": "@BobRoss"
+    },
+    "content": {
+      "text": "Sometimes it's fun to play little games in your mountains. "
+    },
+    "created_at": 1616602210000
+  },
+  {
+    "user": {
+      "name": "Bob Ross",
+      "avatars": "../images/bobross.png",
+      "handle": "@BobRoss"
+    },
+    "content": {
+      "text": "Learn to work with anything that happens. "
+    },
+    "created_at": 1611504610000
+  },
+  {
+    "user": {
+      "name": "Bob Ross",
+      "avatars": "../images/bobross.png",
+      "handle": "@BobRoss"
+    },
+    "content": {
+      "text": "All kinds of beautiful little things just happen. "
+    },
+    "created_at": 1606234210000
+  },
+  {
+    "user": {
+      "name": "Bob Ross",
+      "avatars": "../images/bobross.png",
+      "handle": "@BobRoss"
+    },
+    "content": {
+      "text": "Just let it sorta dance around in the sky. "
+    },
+    "created_at": 1615565410000
+  },
+  {
+    "user": {
+      "name": "Bob Ross",
+      "avatars": "../images/bobross.png",
+      "handle": "@BobRoss"
+    },
+    "content": {
+      "text": "You decide where all these things are. "
+    },
+    "created_at": 1520871010000
+  },
+  {
+    "user": {
+      "name": "Bob Ross",
+      "avatars": "../images/bobross.png",
+      "handle": "@BobRoss"
+    },
+    "content": {
+      "text": "Just let it sorta dance around in the sky. "
+    },
+    "created_at": new Date().getTime()
+  }
 ];
 
 // Returns a string describing the relative time since the given timestamp (milliseconds).
 const convertTimestamp = (timestamp) => {
   const currentDate = new Date();
-  const currentDateTs = Math.floor(currentDate.getTime()); // milliseconds
-  const seconds = Math.floor((currentDateTs - timestamp) / 1000); // seconds
+  const currentDateTs = Math.floor(currentDate.getTime());
+  const seconds = Math.floor((currentDateTs - timestamp) / 1000);
   if (seconds > 365 * 24 * 3600) {
     const years = Math.floor(seconds / (365 * 24 * 3600));
     return `${years} year${years === 1 ? "" : "s"} ago`;
@@ -30,8 +92,9 @@ const convertTimestamp = (timestamp) => {
   } else if (seconds > 2 * 24 * 3600) {
     const days = Math.floor(seconds / (24 * 3600));
     return `${days} day${days === 1 ? "" : "s"} ago`;
-  } else if (seconds > 24 * 3600) {
-    return "yesterday";
+  } else if (seconds > 3600) {
+    const hours = Math.floor(seconds / (3600));
+    return `${hours} hour${hours === 1 ? "" : "s"} ago`;
   } else if (seconds > 60) {
     const minutes = Math.floor(seconds / 60);
     return `${minutes} minute${minutes === 1 ? "" : "s"} ago`;
@@ -105,11 +168,13 @@ const renderTweets = (tweets) => {
   }
 };
 
-
 $(document).ready(() => {
 
-  // Render all tweets from the data array
-  renderTweets(data);
+  // Sort data array by timestamp
+  const dataSorted = data.sort((tweet1, tweet2) => tweet1.created_at - tweet2.created_at).reverse();
+
+  // Render all tweets from the data array from most recent to oldest
+  renderTweets(dataSorted);
 
   // Toggle the visibility of the user's @handle on hover
   $(".tweet").on("mouseenter", function() {
