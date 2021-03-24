@@ -1,8 +1,10 @@
 // Returns a string describing the relative time since the given timestamp (milliseconds).
 const convertTimestamp = (timestamp) => {
+
   const currentDate = new Date();
   const currentDateTs = Math.floor(currentDate.getTime());
   const seconds = Math.floor((currentDateTs - timestamp) / 1000);
+
   if (seconds > 365 * 24 * 3600) {
     const years = Math.floor(seconds / (365 * 24 * 3600));
     return `${years} year${years === 1 ? "" : "s"} ago`;
@@ -23,6 +25,7 @@ const convertTimestamp = (timestamp) => {
   } else {
     return "Just now";
   }
+
 };
 
 // Returns a single tweet component constructed using the given tweet data
@@ -64,8 +67,7 @@ const createTweetElement = (tweetData) => {
     <img src="/images/icons/flag.png" alt="report" />
     <img src="/images/icons/retweet.png" alt="retweet" />
     <img src="/images/icons/heart.png" alt="like" />
-    </div>`
-  );
+    </div>`);
 
   // Add the footer elements to the footer
   $footer.append($timestamp);
@@ -83,11 +85,13 @@ const createTweetElement = (tweetData) => {
 
 // Construct tweets in the given tweets array and append them to the tweets container
 const renderTweets = (tweets) => {
+
   const container = $("#all-tweets");
   for (const tweetData of tweets) {
     const tweetComponent = createTweetElement(tweetData);
     container.append(tweetComponent);
   }
+
 };
 
 const fetchTweetData = (form, renderFunc) => {
@@ -186,21 +190,6 @@ $(document).ready(() => {
   $(".new-tweet").on("submit", (event) => {
     // Submit the tweet data to the server
     submitTweetHandler(event);
-  });
-
-  // Toggle the visibility of the user's @handle on hover
-  $(".tweet").on("mouseenter", function() {
-
-    const handle = $(this).find(".handle");
-    handle.css("visibility", "visible");
-
-  });
-
-  $(".tweet").on("mouseleave", function() {
-
-    const handle = $(this).find(".handle");
-    handle.css("visibility", "hidden");
-
   });
 
 });

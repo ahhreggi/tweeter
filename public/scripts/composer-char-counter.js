@@ -1,14 +1,11 @@
 // Escapes unsafe characters to prevent cross-site scripting
-const escape =  function(str) {
+const escape = function(str) {
+
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
-  return convertToPlain(div.innerHTML);
-}
+  return div.innerHTML;
 
-const convertToPlain = (rtf) => {
-  rtf = rtf.replace(/\\par[d]?/g, "");
-  return rtf.replace(/\{\*?\\[^{}]+}|[{}]|\\\n?[A-Za-z]+\n?(?:-?\d+)?[ ]?/g, "").trim();
-}
+};
 
 // Update counter and button style
 const updateCounter = (element) => {
@@ -55,6 +52,7 @@ const updateCounter = (element) => {
 
 // Disables the button if disable is set to true, enables it otherwise.
 const toggleDisable = (button, disable) => {
+
   if (disable) {
     button.prop("disabled", true);
     button.addClass("btn-disable");
@@ -69,7 +67,9 @@ $(document).ready(() => {
 
   // Dynamically update the counter as a user types
   $("#tweet-text-input").on("input", function() {
+
     updateCounter(this);
+
   });
 
 });
