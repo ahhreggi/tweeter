@@ -103,9 +103,10 @@ const convertTimestamp = (timestamp) => {
   }
 };
 
+// Returns a single tweet component constructed using the given tweet data
 const createTweetElement = (tweetData) => {
 
-  // Create a single tweet
+  // Create the main tweet container
   const $tweet = $(`<article class="tweet">`);
 
   // Create the header
@@ -153,13 +154,12 @@ const createTweetElement = (tweetData) => {
   $tweet.append($content);
   $tweet.append($footer);
 
-  // Return the tweet
+  // Return the tweet component
   return $tweet;
 
 };
 
-// Add each tweet in tweets to the tweets container
-// tweets => an array of tweetData objects
+// Construct tweets in the given tweets array and append them to the tweets container
 const renderTweets = (tweets) => {
   const container = $("main");
   for (const tweetData of tweets) {
@@ -170,10 +170,10 @@ const renderTweets = (tweets) => {
 
 $(document).ready(() => {
 
-  // Sort data array by timestamp
+  // Sort data array by timestamp (most recent to oldest)
   const sortedTweets = tweetDataArray.sort((tweet1, tweet2) => tweet1.created_at - tweet2.created_at).reverse();
 
-  // Render all tweets from the data array from most recent to oldest
+  // Render the sorted tweet components onto the page
   renderTweets(sortedTweets);
 
   // Toggle the visibility of the user's @handle on hover
