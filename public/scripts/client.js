@@ -138,7 +138,7 @@ const fetchTweetData = (form, renderFunc) => {
 
   } else {
 
-    alert("error: message is too long (limit: 140 characters)");
+    alert("message length must be 1 to 140 characters");
 
   }
 
