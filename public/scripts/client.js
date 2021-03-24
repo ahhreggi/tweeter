@@ -212,17 +212,34 @@ const submitTweet = event => {
   // Retrieve the form component
   const form = $("#tweet-text");
 
+  // Submit an ajax request using the form data
   fetchTweetData(form);
 
 };
 
 $(document).ready(() => {
 
-  // Sort the data array by timestamp (most recent to oldest)
-  const sortedTweets = tweetDataArray.sort((tweet1, tweet2) => tweet1.created_at - tweet2.created_at).reverse();
+  // Loads existing tweets and renders them onto the page
+  const loadTweets = () => {
 
-  // Render the sorted tweet components onto the page
-  renderTweets(sortedTweets);
+    // Retrieve the array of tweets as JSON
+    $.ajax({
+      url: "/tweets",
+      method: "GET"
+    })
+      .then(tweets => {
+      // Sort the data array by timestamp (most recent to oldest)
+        const sortedTweets = tweets.sort((tweet1, tweet2) => tweet1.created_at - tweet2.created_at).reverse();
+        renderTweets(sortedTweets);
+      });
+
+  };
+
+  // Load and render existing tweets
+  loadTweets();
+
+  // Listen for new tweet form submission
+  $(".new-tweet").on("submit", submitTweet);
 
   // Toggle the visibility of the user's @handle on hover
   $(".tweet").on("mouseenter", function() {
@@ -238,8 +255,5 @@ $(document).ready(() => {
     handle.css("visibility", "hidden");
 
   });
-
-  // Listen for new tweet form submission
-  $(".new-tweet").on("submit", submitTweet);
 
 });
