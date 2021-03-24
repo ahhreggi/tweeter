@@ -113,6 +113,7 @@ const fetchTweetData = (form, renderFunc) => {
 
   // Disable the submit button
   const submitBtn = form.siblings().find("button");
+  toggleDisable(submitBtn, true); // eslint-disable-line
 
   // Submit a post request with the tweet data
   $.ajax({

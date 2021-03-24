@@ -26,6 +26,7 @@ const updateCounter = (element) => {
 
 };
 
+// Disables the button if disable is set to true, enables it otherwise.
 const toggleDisable = (button, disable) => {
   if (disable) {
     button.prop("disabled", true);
