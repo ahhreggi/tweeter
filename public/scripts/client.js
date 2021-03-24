@@ -95,42 +95,52 @@ const fetchTweetData = (form, renderFunc) => {
   // Retrieve the tweet data from the form
   const tweetMessage = form.val();
 
-  // Construct the tweet data object
-  const tweetData = {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": tweetMessage
-    },
-    "created_at": new Date().getTime()
-  };
+  // Validate the message (must be 1-140 characters in length)
+  const length = tweetMessage.length;
+  if (length > 0 && length <= 140) {
 
-  // Convert the tweet data object into a query string
-  const data = form.serialize() + "&" + $.param(tweetData);
+    // Construct the tweet data object
+    const tweetData = {
+      "user": {
+        "name": "Bob Ross",
+        "avatars": "../images/bobross.png",
+        "handle": "@BobRoss"
+      },
+      "content": {
+        "text": tweetMessage
+      },
+      "created_at": new Date().getTime()
+    };
 
-  // Disable the submit button
-  const submitBtn = form.siblings().find("button");
-  toggleDisable(submitBtn, true); // eslint-disable-line
+    // Convert the tweet data object into a query string
+    const data = form.serialize() + "&" + $.param(tweetData);
 
-  // Submit a post request with the tweet data
-  $.ajax({
-    url: "/tweets",
-    method: "POST",
-    data: data
-  })
-    .then(() => {
-      // Clear the visible input field and hidden form
-      const inputField = $("#tweet-text-input");
-      $("#tweet-text-input").html("");
-      // Update the tweet form counter (reset to empty)
-      updateCounter(inputField); // eslint-disable-line
-      // Reload all tweets (to update timestamps)
-      renderFunc(loadTweets());
+    // Disable the submit button
+    const submitBtn = form.siblings().find("button");
+    toggleDisable(submitBtn, true); // eslint-disable-line
+
+    // Submit a post request with the tweet data
+    $.ajax({
+      url: "/tweets",
+      method: "POST",
+      data: data
     })
-    .catch(err => console.log(err));
+      .then(() => {
+        // Clear the visible input field and hidden form
+        const inputField = $("#tweet-text-input");
+        $("#tweet-text-input").html("");
+        // Update the tweet form counter (reset to empty)
+        updateCounter(inputField); // eslint-disable-line
+        // Reload all tweets (to update timestamps)
+        renderFunc(loadTweets());
+      })
+      .catch(err => console.log(err));
+
+  } else {
+
+    alert("error: message is too long (limit: 140 characters)");
+
+  }
 
 };
 

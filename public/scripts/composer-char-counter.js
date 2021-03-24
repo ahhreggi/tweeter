@@ -18,11 +18,11 @@ const updateCounter = (element) => {
   // Enable/disable submit button
   const tweetBtn = $(counter).siblings("button");
 
-  if (charsLeft < 0 || charsLeft >= 140) {
-    toggleDisable(tweetBtn, true);
-  } else {
-    toggleDisable(tweetBtn, false);
-  }
+  // if (charsLeft < 0 || charsLeft >= 140) {
+  // toggleDisable(tweetBtn, true);
+  // } else {
+  toggleDisable(tweetBtn, false);
+  // }
 
 };
 
