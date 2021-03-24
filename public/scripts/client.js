@@ -191,4 +191,39 @@ $(document).ready(() => {
 
   });
 
+  // Listen for new tweet form submission
+  $(".new-tweet").on("submit", function(event) {
+
+    console.log(event);
+
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    const form = $("#tweet-text");
+    const tweetMessage = form.val();
+
+    const tweetData = {
+      "user": {
+        "name": "Bob Ross",
+        "avatars": "../images/bobross.png",
+        "handle": "@BobRoss"
+      },
+      "content": {
+        "text": tweetMessage
+      },
+      "created_at": new Date().getTime()
+    };
+
+    const data = form.serialize() + "&" + $.param(tweetData);
+
+    $.ajax({
+      url: "/tweets",
+      method: "POST",
+      data: data
+    })
+      .then(res => console.log("Success", res))
+      .catch(err => console.log(err));
+
+  });
+
 });
