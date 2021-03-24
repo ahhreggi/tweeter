@@ -168,7 +168,7 @@ const renderTweets = (tweets) => {
   }
 };
 
-const fetchTweetData = (form, actionWhenDone) => {
+const fetchTweetData = (form, renderFunc) => {
 
   // Retrieve the tweet data from the form
   const tweetMessage = form.val();
@@ -197,7 +197,7 @@ const fetchTweetData = (form, actionWhenDone) => {
   })
     .then(res => {
       console.log("POST request successful.");
-      // actionWhenDone(res)
+      renderFunc(res);
     })
     .catch(err => console.log(err));
 
@@ -213,7 +213,7 @@ const submitTweet = event => {
   const form = $("#tweet-text");
 
   // Submit an ajax request using the form data
-  fetchTweetData(form);
+  fetchTweetData(form, renderTweets);
 
 };
 
