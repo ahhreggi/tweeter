@@ -170,7 +170,7 @@ const renderTweets = (tweets) => {
 
 $(document).ready(() => {
 
-  // Sort data array by timestamp (most recent to oldest)
+  // Sort the data array by timestamp (most recent to oldest)
   const sortedTweets = tweetDataArray.sort((tweet1, tweet2) => tweet1.created_at - tweet2.created_at).reverse();
 
   // Render the sorted tweet components onto the page
