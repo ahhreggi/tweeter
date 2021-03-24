@@ -168,6 +168,54 @@ const renderTweets = (tweets) => {
   }
 };
 
+const fetchTweetData = (form, actionWhenDone) => {
+
+  // Retrieve the tweet data from the form
+  const tweetMessage = form.val();
+
+  // Construct the tweet data object
+  const tweetData = {
+    "user": {
+      "name": "Bob Ross",
+      "avatars": "../images/bobross.png",
+      "handle": "@BobRoss"
+    },
+    "content": {
+      "text": tweetMessage
+    },
+    "created_at": new Date().getTime()
+  };
+
+  // Convert the tweet data object into a query string
+  const data = form.serialize() + "&" + $.param(tweetData);
+
+  // Submit a post request with the tweet data
+  $.ajax({
+    url: "/tweets",
+    method: "POST",
+    data: data
+  })
+    .then(res => {
+      console.log("POST request successful.");
+      // actionWhenDone(res)
+    })
+    .catch(err => console.log(err));
+
+};
+
+// Submit handler
+const submitTweet = event => {
+
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Retrieve the form component
+  const form = $("#tweet-text");
+
+  fetchTweetData(form);
+
+};
+
 $(document).ready(() => {
 
   // Sort the data array by timestamp (most recent to oldest)
@@ -192,38 +240,6 @@ $(document).ready(() => {
   });
 
   // Listen for new tweet form submission
-  $(".new-tweet").on("submit", function(event) {
-
-    console.log(event);
-
-    // Prevent the default form submission behavior
-    event.preventDefault();
-
-    const form = $("#tweet-text");
-    const tweetMessage = form.val();
-
-    const tweetData = {
-      "user": {
-        "name": "Bob Ross",
-        "avatars": "../images/bobross.png",
-        "handle": "@BobRoss"
-      },
-      "content": {
-        "text": tweetMessage
-      },
-      "created_at": new Date().getTime()
-    };
-
-    const data = form.serialize() + "&" + $.param(tweetData);
-
-    $.ajax({
-      url: "/tweets",
-      method: "POST",
-      data: data
-    })
-      .then(res => console.log("Success", res))
-      .catch(err => console.log(err));
-
-  });
+  $(".new-tweet").on("submit", submitTweet);
 
 });
