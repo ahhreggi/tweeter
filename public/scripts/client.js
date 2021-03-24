@@ -1,83 +1,3 @@
-const tweetDataArray = [
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "Tell you what: let's get crazy today. "
-    },
-    "created_at": 1616613010000
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "Sometimes it's fun to play little games in your mountains. "
-    },
-    "created_at": 1616602210000
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "Learn to work with anything that happens. "
-    },
-    "created_at": 1611504610000
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "All kinds of beautiful little things just happen. "
-    },
-    "created_at": 1606234210000
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "Just let it sorta dance around in the sky. "
-    },
-    "created_at": 1615565410000
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "You decide where all these things are. "
-    },
-    "created_at": 1520871010000
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "Just let it sorta dance around in the sky. "
-    },
-    "created_at": new Date().getTime()
-  }
-];
-
 // Returns a string describing the relative time since the given timestamp (milliseconds).
 const convertTimestamp = (timestamp) => {
   const currentDate = new Date();
@@ -161,14 +81,14 @@ const createTweetElement = (tweetData) => {
 
 // Construct tweets in the given tweets array and append them to the tweets container
 const renderTweets = (tweets) => {
-  const container = $("main");
+  const container = $("#all-tweets");
   for (const tweetData of tweets) {
     const tweetComponent = createTweetElement(tweetData);
     container.append(tweetComponent);
   }
 };
 
-const fetchTweetData = (form, renderFunc) => {
+const fetchTweetData = (form, actionWhenDone) => {
 
   // Retrieve the tweet data from the form
   const tweetMessage = form.val();
@@ -197,9 +117,10 @@ const fetchTweetData = (form, renderFunc) => {
   })
     .then(res => {
       console.log("POST request successful.");
-      renderFunc(res);
+      actionWhenDone(res);
     })
     .catch(err => console.log(err));
+
 
 };
 
@@ -213,33 +134,40 @@ const submitTweet = event => {
   const form = $("#tweet-text");
 
   // Submit an ajax request using the form data
-  fetchTweetData(form, renderTweets);
+  fetchTweetData(form, loadTweets);
+
+};
+
+// Loads existing tweets and renders them onto the page
+const loadTweets = () => {
+
+  // Retrieve the array of tweets as JSON
+  $.ajax({
+    url: "/tweets",
+    method: "GET"
+  })
+    .then(tweets => {
+      // Sort the data array by timestamp (most recent to oldest)
+      const sortedTweets = tweets.sort((tweet1, tweet2) => tweet1.created_at - tweet2.created_at).reverse();
+      // Clear the page of existing elements
+      $("#all-tweets").empty();
+      // Render the sorted tweets
+      renderTweets(sortedTweets);
+    });
 
 };
 
 $(document).ready(() => {
 
-  // Loads existing tweets and renders them onto the page
-  const loadTweets = () => {
-
-    // Retrieve the array of tweets as JSON
-    $.ajax({
-      url: "/tweets",
-      method: "GET"
-    })
-      .then(tweets => {
-      // Sort the data array by timestamp (most recent to oldest)
-        const sortedTweets = tweets.sort((tweet1, tweet2) => tweet1.created_at - tweet2.created_at).reverse();
-        renderTweets(sortedTweets);
-      });
-
-  };
-
   // Load and render existing tweets
   loadTweets();
 
   // Listen for new tweet form submission
-  $(".new-tweet").on("submit", submitTweet);
+  $(".new-tweet").on("submit", (event) => {
+    // Submit the tweet data to the server
+    submitTweet(event);
+  });
+
 
   // Toggle the visibility of the user's @handle on hover
   $(".tweet").on("mouseenter", function() {
