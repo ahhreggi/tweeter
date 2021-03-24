@@ -1,10 +1,12 @@
 // Returns a string describing the relative time since the given timestamp (milliseconds).
 const convertTimestamp = (timestamp) => {
 
+  // Retrieve current date in milliseconds and calculate difference
   const currentDate = new Date();
   const currentDateTs = Math.floor(currentDate.getTime());
   const seconds = Math.floor((currentDateTs - timestamp) / 1000);
 
+  // Return a message based on difference
   if (seconds > 365 * 24 * 3600) {
     const years = Math.floor(seconds / (365 * 24 * 3600));
     return `${years} year${years === 1 ? "" : "s"} ago`;
@@ -153,10 +155,8 @@ const submitTweetHandler = event => {
 
   // Prevent the default form submission behavior
   event.preventDefault();
-
   // Retrieve the hidden form component
   const form = $("#tweet-text");
-
   // Submit an ajax request using the form data
   fetchTweetData(form, loadTweets);
 
@@ -186,10 +186,7 @@ $(document).ready(() => {
   // Load and render existing tweets
   loadTweets();
 
-  // Listen for new tweet form submission
-  $(".new-tweet").on("submit", (event) => {
-    // Submit the tweet data to the server
-    submitTweetHandler(event);
-  });
+  // Listen for new tweet form submission and submit tweet data to the server
+  $(".new-tweet").on("submit", submitTweetHandler);
 
 });
