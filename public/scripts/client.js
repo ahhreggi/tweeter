@@ -10,6 +10,12 @@ const tweetData = {
   "created_at": 1461116232227 // milliseconds
 };
 
+const data = [
+  tweetData,
+  tweetData,
+  tweetData
+];
+
 // Returns a string describing the relative time since the given timestamp (milliseconds).
 const convertTimestamp = (timestamp) => {
   const currentDate = new Date();
@@ -89,28 +95,31 @@ const createTweetElement = (tweetData) => {
 
 };
 
+// Add each tweet in tweets to the tweets container
+// tweets => an array of tweetData objects
+const renderTweets = (tweets) => {
+  const container = $("main");
+  for (const tweetData of tweets) {
+    const tweetComponent = createTweetElement(tweetData);
+    container.append(tweetComponent);
+  }
+};
+
 
 $(document).ready(() => {
 
-  // Create a new tweet with the sample data
-  const $tweet = createTweetElement(tweetData);
-
-  // Add the tweet to the main container
-  // $("main");
-  $("main").append($tweet);
-
-
-
+  // Render all tweets from the data array
+  renderTweets(data);
 
   // Toggle the visibility of the user's @handle on hover
-  $(".tweet").on("mouseenter", function () {
+  $(".tweet").on("mouseenter", function() {
 
     const handle = $(this).find(".handle");
     handle.css("visibility", "visible");
 
   });
 
-  $(".tweet").on("mouseleave", function () {
+  $(".tweet").on("mouseleave", function() {
 
     const handle = $(this).find(".handle");
     handle.css("visibility", "hidden");
