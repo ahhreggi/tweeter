@@ -3,7 +3,8 @@
 <img src="public/images/bobross.png" alt="tweeter" width="150px">
 <p>
 <h1>Tweeter</h1>
-A simple, single-page Twitter clone that allows you to tweet as Bob Ross... <i>let's get crazy.</i> :)
+<p>Tweet as Bob Ross in this simple, single-page Twitter clone.</p>
+<p><i>let's get crazy.</i> :)
 </p>
 </div>
 
