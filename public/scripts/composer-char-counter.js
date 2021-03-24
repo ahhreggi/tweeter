@@ -2,7 +2,12 @@
 const escape =  function(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
+  return convertToPlain(div.innerHTML);
+}
+
+const convertToPlain = (rtf) => {
+  rtf = rtf.replace(/\\par[d]?/g, "");
+  return rtf.replace(/\{\*?\\[^{}]+}|[{}]|\\\n?[A-Za-z]+\n?(?:-?\d+)?[ ]?/g, "").trim();
 }
 
 // Update counter and button style
@@ -17,9 +22,13 @@ const updateCounter = (element) => {
   const hiddenField = $("#tweet-text");
   hiddenField.val(tweetMsg);
 
-  // CHECK LENGTHS (TEMP)
-  console.log($("#tweet-text-input").text().length, "visible");
-  console.log($("#tweet-text").val().length, "hidden")
+  // // CHECK LENGTHS (TEMP)
+  // console.log(tweetMsg.length, "visible");
+  // console.log($("#tweet-text").val().length, "hidden")
+
+  // // CHECK VALUES (TEMP)
+  // console.log(tweetMsg);
+  // console.log($("#tweet-text").val());
 
   if (charsLeft >= 0) {
     counter.css("color", "rgb(65, 65, 65)");
@@ -34,6 +43,12 @@ const updateCounter = (element) => {
     toggleDisable(tweetBtn, true);
   } else {
     toggleDisable(tweetBtn, false);
+  }
+
+  // Ensure that the input fields are empty if the character count is 0
+  if (charsLeft === 140) {
+    $(element).html("");
+    hiddenField.val("");
   }
 
 };
