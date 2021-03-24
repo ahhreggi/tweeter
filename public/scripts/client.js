@@ -128,7 +128,7 @@ const fetchTweetData = (form, renderFunc) => {
       .then(() => {
         // Clear the visible input field and hidden form
         const inputField = $("#tweet-text-input");
-        $("#tweet-text-input").html("");
+        $("#tweet-text-input").text("");
         // Update the tweet form counter (reset to empty)
         updateCounter(inputField); // eslint-disable-line
         // Reload all tweets (to update timestamps)
@@ -187,7 +187,6 @@ $(document).ready(() => {
     // Submit the tweet data to the server
     submitTweetHandler(event);
   });
-
 
   // Toggle the visibility of the user's @handle on hover
   $(".tweet").on("mouseenter", function() {

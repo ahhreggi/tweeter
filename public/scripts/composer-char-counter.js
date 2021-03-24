@@ -1,13 +1,14 @@
 // Update counter and button style
 const updateCounter = (element) => {
 
-  const tweetMsg = $(element).html();
+  const tweetMsg = $(element).text();
   const charsLeft = 140 - tweetMsg.length;
   const counter = $(element).parent().find(".counter");
-  counter.html(charsLeft);
+  counter.text(charsLeft);
 
   // Store message from div into hidden textarea element
-  $("#tweet-text").val(tweetMsg);
+  const hiddenField = $("#tweet-text");
+  hiddenField.val(tweetMsg);
 
   if (charsLeft >= 0) {
     counter.css("color", "rgb(65, 65, 65)");
