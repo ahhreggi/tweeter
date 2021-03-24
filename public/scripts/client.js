@@ -1,4 +1,4 @@
-const data = [
+const tweetDataArray = [
   {
     "user": {
       "name": "Bob Ross",
@@ -171,10 +171,10 @@ const renderTweets = (tweets) => {
 $(document).ready(() => {
 
   // Sort data array by timestamp
-  const dataSorted = data.sort((tweet1, tweet2) => tweet1.created_at - tweet2.created_at).reverse();
+  const sortedTweets = tweetDataArray.sort((tweet1, tweet2) => tweet1.created_at - tweet2.created_at).reverse();
 
   // Render all tweets from the data array from most recent to oldest
-  renderTweets(dataSorted);
+  renderTweets(sortedTweets);
 
   // Toggle the visibility of the user's @handle on hover
   $(".tweet").on("mouseenter", function() {
