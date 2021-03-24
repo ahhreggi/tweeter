@@ -1,7 +1,14 @@
+// Escapes unsafe characters to prevent cross-site scripting
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 // Update counter and button style
 const updateCounter = (element) => {
 
-  const tweetMsg = $(element).text();
+  const tweetMsg = escape($(element).text());
   const charsLeft = 140 - tweetMsg.length;
   const counter = $(element).parent().find(".counter");
   counter.text(charsLeft);
@@ -9,6 +16,10 @@ const updateCounter = (element) => {
   // Store message from div into hidden textarea element
   const hiddenField = $("#tweet-text");
   hiddenField.val(tweetMsg);
+
+  // CHECK LENGTHS (TEMP)
+  console.log($("#tweet-text-input").text().length, "visible");
+  console.log($("#tweet-text").val().length, "hidden")
 
   if (charsLeft >= 0) {
     counter.css("color", "rgb(65, 65, 65)");
