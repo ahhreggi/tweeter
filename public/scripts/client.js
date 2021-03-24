@@ -18,6 +18,8 @@ const convertTimestamp = (timestamp) => {
   } else if (seconds > 60) {
     const minutes = Math.floor(seconds / 60);
     return `${minutes} minute${minutes === 1 ? "" : "s"} ago`;
+  } else if (seconds > 2) {
+    return `${seconds} seconds ago`;
   } else {
     return "Just now";
   }
@@ -88,7 +90,7 @@ const renderTweets = (tweets) => {
   }
 };
 
-const fetchTweetData = (form, actionWhenDone) => {
+const fetchTweetData = (form, renderFunc) => {
 
   // Retrieve the tweet data from the form
   const tweetMessage = form.val();
@@ -109,28 +111,35 @@ const fetchTweetData = (form, actionWhenDone) => {
   // Convert the tweet data object into a query string
   const data = form.serialize() + "&" + $.param(tweetData);
 
+  // Disable the submit button
+  const submitBtn = form.siblings().find("button");
+
   // Submit a post request with the tweet data
   $.ajax({
     url: "/tweets",
     method: "POST",
     data: data
   })
-    .then(res => {
-      console.log("POST request successful.");
-      actionWhenDone(res);
+    .then(() => {
+      // Clear the visible input field and hidden form
+      const inputField = $("#tweet-text-input");
+      $("#tweet-text-input").html("");
+      // Update the tweet form counter (reset to empty)
+      updateCounter(inputField); // eslint-disable-line
+      // Reload all tweets (to update timestamps)
+      renderFunc(loadTweets());
     })
     .catch(err => console.log(err));
-
 
 };
 
 // Submit handler
-const submitTweet = event => {
+const submitTweetHandler = event => {
 
   // Prevent the default form submission behavior
   event.preventDefault();
 
-  // Retrieve the form component
+  // Retrieve the hidden form component
   const form = $("#tweet-text");
 
   // Submit an ajax request using the form data
@@ -165,7 +174,7 @@ $(document).ready(() => {
   // Listen for new tweet form submission
   $(".new-tweet").on("submit", (event) => {
     // Submit the tweet data to the server
-    submitTweet(event);
+    submitTweetHandler(event);
   });
 
 
