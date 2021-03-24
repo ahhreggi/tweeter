@@ -1,3 +1,4 @@
+/* eslint-disable */
 "use strict";
 
 // This module exports a utility function for simulating
@@ -13,5 +14,4 @@ function someMilliseconds() {
 
 module.exports = function simulateDelay(callback) {
   setTimeout(callback, someMilliseconds());
-}
-
+};
