@@ -16,7 +16,7 @@
 
 Data is exchanged with a server via AJAX requests and rendered live using jQuery.
 
-<b>Built with <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, HTML, CSS, JavaScript, and [jQuery](https://jquery.com/).
+<b>Built with <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, HTML, CSS, JavaScript, and [jQuery](https://jquery.com/).</b>
 
 <!-- INSTALLATION -->
 
