@@ -54,6 +54,7 @@
   font-size: 16px;
   font-weight: 600;
   padding: 0px 15px;
+  user-select: none;
 }
 
 .tweet footer img {

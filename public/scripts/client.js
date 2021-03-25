@@ -41,7 +41,7 @@ const createTweetElement = (tweetData) => {
 
   // Create the header author
   const $author = $(`<span class="author">`);
-  const $avatar = $(`<img src="${tweetData.user.avatars}" alt="profile picture">`);
+  const $avatar = $(`<img src="${tweetData.user.avatars}" alt="profile picture" draggable="false" />`);
   $author.append($avatar);
   $author.append(tweetData.user.name);
 
@@ -65,11 +65,13 @@ const createTweetElement = (tweetData) => {
   const $timestamp = $(`<div>${date}</div>`);
 
   // Create the footer icons
-  const $icons = $(`<div>
-    <img src="/images/icons/flag.png" alt="report" />
-    <img src="/images/icons/retweet.png" alt="retweet" />
-    <img src="/images/icons/heart.png" alt="like" />
-    </div>`);
+  const $icons = $(`
+    <div>
+      <img src="/images/icons/flag.png" alt="report" draggable="false" />
+      <img src="/images/icons/retweet.png" alt="retweet" draggable="false" />
+      <img src="/images/icons/heart.png" alt="like" draggable="false" />
+    </div>
+  `);
 
   // Add the footer elements to the footer
   $footer.append($timestamp);
@@ -182,7 +184,7 @@ $(document).ready(() => {
   // Load and render existing tweets
   loadTweets();
 
-  // Listen for new tweet form submission and submit tweet data to the server
+  // Listen for new tweet form submission then submit and render tweet data
   $(".new-tweet").on("submit", submitTweetHandler);
 
   let composeVisible = true;
@@ -217,7 +219,7 @@ $(document).ready(() => {
     const form = $("#new-tweet form");
     const pos = $(document).scrollTop();
 
-    // If the user is at the top of the page, toggle the form's visibility
+    // Toggle the form's visibility based on the user's position on the page
     if (pos <= 400) {
       if (!composeVisible) {
         form.slideDown();
