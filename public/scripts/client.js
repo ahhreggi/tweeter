@@ -1,3 +1,6 @@
+let recentlyTweeted = false;
+let composeVisible = true;
+
 // Returns a string describing the relative time since the given timestamp (milliseconds).
 const convertTimestamp = (timestamp) => {
 
@@ -93,6 +96,20 @@ const renderTweets = (tweets) => {
   const container = $("#all-tweets");
   for (const tweetData of tweets) {
     const tweetComponent = createTweetElement(tweetData);
+
+    if (recentlyTweeted) {
+      const first = tweetComponent.first();
+      first.slideUp();
+      first.css("display", "none");
+      // tweetComponent.first().css("background-color", "red");
+
+      recentlyTweeted = false;
+      setTimeout(() => {
+        // tweetComponent.first().css("background-color", "blue");
+        first.slideDown();
+        first.css("display", "block");
+      }, 500);
+    }
     container.append(tweetComponent);
   }
 
@@ -140,7 +157,8 @@ const fetchTweetData = (form, renderFunc) => {
         // Update the tweet form counter (reset to empty)
         updateCounter(inputField); // eslint-disable-line
         // Reload all tweets (to update timestamps)
-        renderFunc(loadTweets());
+        recentlyTweeted = true;
+        renderFunc();
       })
       .catch(err => console.log(err));
 
@@ -162,6 +180,7 @@ const submitTweetHandler = event => {
 
 // Loads existing tweets and renders them onto the page
 const loadTweets = () => {
+  console.log("Loading tweets!");
 
   // Retrieve the array of tweets as JSON
   $.ajax({
@@ -186,18 +205,16 @@ $(document).ready(() => {
 
   const form = $("#new-tweet form");
   const scrollBtn = $("#scroll-btn");
-  let composeVisible = true;
 
   // Listen for new tweet form submission then submit and render tweet data
   $("#new-tweet form").on("submit", function(event) {
-    submitTweetHandler(event)
+    submitTweetHandler(event);
   });
 
   // Show/hide the corner compose button based on the user's position
   $(document).on("scroll", function() {
 
     const pos = $(document).scrollTop();
-    console.log(pos);
 
     if (pos <= 450) {
       scrollBtn.fadeOut(200);
