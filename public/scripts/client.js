@@ -206,6 +206,11 @@ $(document).ready(() => {
   const form = $("#new-tweet form");
   const scrollBtn = $("#scroll-btn");
 
+  $(".like").on("click", function() {
+    // $(this).addClass("clicked");
+    alert("clicked!");
+  });
+
   // Listen for new tweet form submission then submit and render tweet data
   $("#new-tweet form").on("submit", function(event) {
     submitTweetHandler(event);

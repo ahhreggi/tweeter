@@ -73,4 +73,5 @@
   font-family: "Bungee", sans-serif;
   color: rgb(65, 65, 65);
   font-size: 20px;
+  user-select: none;
 }

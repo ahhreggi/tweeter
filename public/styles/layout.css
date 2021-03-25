@@ -23,7 +23,7 @@ main {
   flex-direction: column;
 }
 
-img {
+img, button {
   user-select: none;
 }
 
