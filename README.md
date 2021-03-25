@@ -39,4 +39,4 @@ Data is exchanged with a server via AJAX requests and rendered live using jQuery
 
 ## 📷 Screenshots
 
-<img src="https://i.imgur.com/fvsJnnC.png" alt="home.png">
+<img src="/images/screenshots/tweeter.png" alt="screenshot">
