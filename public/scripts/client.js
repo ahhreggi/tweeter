@@ -188,20 +188,33 @@ $(document).ready(() => {
   let composeVisible = true;
 
   $("#compose-btn").on("click", function() {
-    if (composeVisible) {
-      $("#compose-tweet form").slideUp();
+
+    const form = $("#compose-tweet form");
+    const pos = $(document).scrollTop();
+
+    // If the user is far down the page, scroll up and always show the form
+    let scrollUp = false;
+    if (pos > 400) {
+      scrollUp = true;
       composeVisible = false;
-    } else {
-      $("#compose-tweet form").slideDown();
-      composeVisible = true;
+      $(document).scrollTop(400);
     }
+
+    // If the user is at the top of the page, toggle the form's visibility
+    if (!composeVisible) {
+      form.slideDown();
+      composeVisible = true;
+    } else {
+      form.slideUp();
+      composeVisible = false;
+    }
+
   });
 
   $(document).on("scroll", function() {
     const pos = $(document).scrollTop();
     console.log(pos);
     if (composeVisible) {
-
       if (pos <= 400) {
         $("#compose-tweet form").slideDown();
       } else if (pos > 400) {
