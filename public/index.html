@@ -40,45 +40,49 @@
     </a>
   </nav>
 
-  <!-- Profile Header -->
-  <header id="profile-header">
-    <div>
-      <a href="https://en.wikipedia.org/wiki/Bob_Ross" target="_blank">
-        <img src="/images/bobross.png" />
-      </a>
-    </div>
-    <div>
-      <span><strong>Bob</strong> Ross</span>
-    </div>
-  </header>
+  <div>
 
-  <main class="container">
+    <!-- Profile Header -->
+    <header id="profile-header">
+      <div>
+        <a href="https://en.wikipedia.org/wiki/Bob_Ross" target="_blank">
+          <img src="/images/bobross.png" />
+        </a>
+      </div>
+      <div>
+        <span><strong>Bob</strong> Ross</span>
+      </div>
+    </header>
 
-    <!-- Tweet Form -->
-    <section id="new-tweet">
-      <form method="POST" action="/tweets/">
-        <label for="tweet-text">What are you humming about?</label>
-        <div contenteditable id="tweet-text-input"></div>
-        <textarea name="text" id="tweet-text" class="hidden"></textarea>
-        <footer>
-          <div>
-          <button class="btn-disable" type="submit" disabled>Tweet</button>
-          <span class="error">too long</span>
-          </div>
-          <output name="counter" class="counter" for="tweet-text">140</output>
-        </footer>
-      </form>
-    </section>
+    <main class="container">
 
-    <!-- All Tweets -->
-    <section id="all-tweets" class="container">
-    </section>
+      <!-- Tweet Form -->
+      <section id="new-tweet">
+        <form method="POST" action="/tweets/">
+          <label for="tweet-text">What are you humming about?</label>
+          <div contenteditable id="tweet-text-input"></div>
+          <textarea name="text" id="tweet-text" class="hidden"></textarea>
+          <footer>
+            <div>
+            <button class="btn-disable" type="submit" disabled>Tweet</button>
+            <span class="error">too long</span>
+            </div>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </footer>
+        </form>
+      </section>
 
-    <div id="scroll-btn" class="compose">
-      <img class="" src="images/icons/arrow.png" alt="arrow icon" draggable="false" />
-    </div>
+      <!-- All Tweets -->
+      <section id="all-tweets" class="container">
+      </section>
 
-  </main>
+      <div id="scroll-btn" class="compose">
+        <img class="" src="images/icons/arrow.png" alt="arrow icon" draggable="false" />
+      </div>
+
+    </main>
+
+  </div>
 
 </body>
 
