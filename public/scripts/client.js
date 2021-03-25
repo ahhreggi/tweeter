@@ -262,13 +262,13 @@ $(document).ready(() => {
       composeVisible = true;
       inputTO = setTimeout(() => {
         $("#tweet-text-input").focus();
-      }, 500)
+      }, 500);
     }
 
   });
 
   $("#new-tweet").on("click", function() {
     $("#tweet-text-input").focus();
-  })
+  });
 
 });
