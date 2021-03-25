@@ -23,6 +23,12 @@
   padding: 15px 35px;
 }
 
+.new-tweet footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .new-tweet button {
   display: inline-block;
   background-color: #4056a1;
@@ -53,10 +59,11 @@
   cursor: default;
 }
 
-.new-tweet footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.new-tweet .error {
+  color: rgb(231, 87, 87);
+  font-size: 16px;
+  margin-left: 5px;
+  visibility: hidden;
 }
 
 .counter {

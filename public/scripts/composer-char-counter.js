@@ -19,13 +19,13 @@ const updateCounter = (element) => {
   const hiddenField = $("#tweet-text");
   hiddenField.val(tweetMsg);
 
-  // // CHECK LENGTHS (TEMP)
-  // console.log(tweetMsg.length, "visible");
-  // console.log($("#tweet-text").val().length, "hidden")
+  // CHECK LENGTHS (TEMP)
+  console.log(tweetMsg.length, "visible");
+  console.log($("#tweet-text").val().length, "hidden")
 
-  // // CHECK VALUES (TEMP)
-  // console.log(tweetMsg);
-  // console.log($("#tweet-text").val());
+  // CHECK VALUES (TEMP)
+  console.log(tweetMsg);
+  console.log($("#tweet-text").val());
 
   if (charsLeft >= 0) {
     counter.css("color", "rgb(65, 65, 65)");
@@ -34,18 +34,19 @@ const updateCounter = (element) => {
   }
 
   // Enable/disable submit button
-  const tweetBtn = $(counter).siblings("button");
+  const tweetBtn = $(counter).siblings().find("button");
 
-  if (charsLeft < 0 || charsLeft >= 140) {
+  if (charsLeft >= 140) {
     toggleDisable(tweetBtn, true);
-  } else {
-    toggleDisable(tweetBtn, false);
-  }
-
-  // Ensure that the input fields are empty if the character count is 0
-  if (charsLeft === 140) {
     $(element).html("");
     hiddenField.val("");
+    console.log("clearing");
+  } else if (charsLeft < 0) {
+    toggleDisable(tweetBtn, true);
+    tweetBtn.siblings("span").css("visibility", "visible")
+  } else {
+    toggleDisable(tweetBtn, false);
+    tweetBtn.siblings("span").css("visibility", "hidden")
   }
 
 };
