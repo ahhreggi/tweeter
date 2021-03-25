@@ -58,11 +58,13 @@
 }
 
 .tweet footer img {
-  height: 16px;
+  height: 18px;
+  width: 18px;
   margin: 5px;
   filter: invert() hue-rotate(45deg) saturate(30%) brightness(70%);
   cursor: pointer;
-  border: 0.5px;
+  border: 1px;
+  padding: 1px;
 }
 
 .tweet:hover footer img {
@@ -71,10 +73,8 @@
 
 .tweet:hover footer img:hover {
   filter: invert() hue-rotate(45deg) saturate(100%) brightness(70%);
-  border: 0px;
-
 }
 
 .tweet:hover footer img:active {
-  border: 0.5px solid rgba(255, 0, 0, 0);
+  padding: 2px;
 }

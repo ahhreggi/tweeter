@@ -112,7 +112,7 @@ const renderTweets = (tweets) => {
             { queue: true, opacity: 1 },
             { duration: 500 }
           );
-      }, 500);
+      }, 200);
     }
     container.append(tweetComponent);
   }
@@ -206,7 +206,7 @@ const focusInput = () => {
 
   return setTimeout(() => {
     $("#tweet-text-input").focus();
-  }, 600);
+  }, 500);
 
 };
 
@@ -244,7 +244,7 @@ $(document).ready(() => {
       if (pos <= 350) {
         form.slideDown();
       } else if (pos > 600) {
-        form.slideUp();
+        form.slideUp(300);
       }
     }
 
