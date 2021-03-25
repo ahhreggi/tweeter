@@ -61,11 +61,7 @@ img {
   opacity: 0.8;
 }
 
-#scroll-btn:hover img {
-  animation: action-invert 0.5s infinite alternate;
-}
-
-@keyframes action-invert {
-  0% { transform: translateY(0), rotate(180deg); }
-  100% { transform: translateY(-5px), rotate(180deg); }
+#scroll-btn:hover img,
+#scroll-btn:active img {
+  filter: brightness(0%) invert();
 }
