@@ -189,13 +189,12 @@ $(document).ready(() => {
 
   $("#compose-btn").on("click", function() {
 
-    const form = $("#compose-tweet form");
+    const form = $("#new-tweet form");
     const pos = $(document).scrollTop();
+    const navArrow = $("#compose-btn img");
 
     // If the user is far down the page, scroll up and always show the form
-    let scrollUp = false;
     if (pos > 400) {
-      scrollUp = true;
       composeVisible = false;
       $(document).scrollTop(400);
     }
@@ -204,23 +203,35 @@ $(document).ready(() => {
     if (!composeVisible) {
       form.slideDown();
       composeVisible = true;
+      navArrow.removeClass("animate");
     } else {
       form.slideUp();
       composeVisible = false;
+      navArrow.addClass("animate");
     }
 
   });
 
+  const arrow = $("main .arrow");
+
   $(document).on("scroll", function() {
+
+    // Scroll to top button
+    const windowHeight = $(window).height();
+    arrow.css("top", `${windowHeight - 50}px`);
+
+    // If the form is visible, automatically show/hide it based on the user's position
+    const form = $("#new-tweet form");
     const pos = $(document).scrollTop();
-    console.log(pos);
+
     if (composeVisible) {
-      if (pos <= 400) {
-        $("#compose-tweet form").slideDown();
-      } else if (pos > 400) {
-        $("#compose-tweet form").slideUp();
+      if (pos <= 450) {
+        form.slideDown();
+      } else if (pos > 460) {
+        form.slideUp();
       }
     }
+
   });
 
 });

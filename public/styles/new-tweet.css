@@ -19,8 +19,11 @@
 }
 
 #new-tweet {
-  margin-top: 15px;
-  padding: 15px 35px;
+  padding: 0px 35px;
+}
+
+#new-tweet form {
+  margin-top: 20px;
 }
 
 #new-tweet footer {

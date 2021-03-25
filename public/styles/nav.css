@@ -28,11 +28,14 @@ nav a {
   cursor: pointer;
 }
 
-#compose-btn img {
+.arrow {
   filter: brightness(0) invert();
   width: 25px;
   margin: auto;
   padding-top: 5px;
+}
+
+.animate {
   animation: action 0.5s infinite alternate;
 }
 
