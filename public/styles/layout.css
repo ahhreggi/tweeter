@@ -23,13 +23,6 @@ main {
   flex-direction: column;
 }
 
-main > span {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  color: rgb(175, 188, 202)
-}
-
 img, button {
   user-select: none;
 }

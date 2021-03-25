@@ -97,11 +97,10 @@ const renderTweets = (tweets) => {
   for (const tweetData of tweets) {
     const tweetComponent = createTweetElement(tweetData);
 
+    // Animate the first tweet as it appears
     if (recentlyTweeted) {
       const first = tweetComponent.first();
-      // first.slideUp();
       first.css("display", "none");
-
       recentlyTweeted = false;
       setTimeout(() => {
         first.slideDown(500);
@@ -116,6 +115,9 @@ const renderTweets = (tweets) => {
     }
     container.append(tweetComponent);
   }
+
+  const feedEnd = $("<span>you're all caught up!</span>");
+  container.append(feedEnd);
 
 };
 

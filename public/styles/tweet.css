@@ -2,6 +2,13 @@
   margin-top: 0px;
 }
 
+#all-tweets > span {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: rgb(175, 188, 202)
+}
+
 .tweet {
   border: 4px solid rgb(65, 65, 65);
   margin: 25px 5px;
