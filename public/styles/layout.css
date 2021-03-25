@@ -48,3 +48,20 @@ main {
   transform: rotate(180deg);
   margin-bottom: 5px;
 }
+
+#scroll-btn:hover {
+  opacity: 0.7;
+}
+
+#scroll-btn:active {
+  opacity: 0.8;
+}
+
+#scroll-btn:hover img {
+  animation: action-invert 0.5s infinite alternate;
+}
+
+@keyframes action-invert {
+  0% { transform: translateY(0), rotate(180deg); }
+  100% { transform: translateY(-5px), rotate(180deg); }
+}

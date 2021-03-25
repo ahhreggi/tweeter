@@ -187,31 +187,6 @@ $(document).ready(() => {
 
   let composeVisible = true;
 
-  $("#compose-btn").on("click", function() {
-
-    const form = $("#new-tweet form");
-    const pos = $(document).scrollTop();
-    const navArrow = $("#compose-btn img");
-
-    // If the user is far down the page, scroll up and always show the form
-    if (pos > 400) {
-      composeVisible = false;
-      $(document).scrollTop(400);
-    }
-
-    // If the user is at the top of the page, toggle the form's visibility
-    if (!composeVisible) {
-      form.slideDown();
-      composeVisible = true;
-      navArrow.removeClass("animate");
-    } else {
-      form.slideUp();
-      composeVisible = false;
-      navArrow.addClass("animate");
-    }
-
-  });
-
   $(document).on("scroll", function() {
 
     // Automatically show/hide the corner compose button based on the user's position
@@ -230,9 +205,30 @@ $(document).ready(() => {
     if (composeVisible) {
       if (pos <= 350) {
         form.slideDown();
-      } else if (pos > 500) {
+      } else if (pos > 600) {
         form.slideUp();
       }
+    }
+
+  });
+
+  $(".compose").on("click", function() {
+
+    const form = $("#new-tweet form");
+    const pos = $(document).scrollTop();
+
+    // If the user is at the top of the page, toggle the form's visibility
+    if (pos <= 400) {
+      if (!composeVisible) {
+        form.slideDown();
+        composeVisible = true;
+      } else if (composeVisible) {
+        form.slideUp();
+        composeVisible = false;
+      }
+    } else if (pos > 400) {
+      $(document).scrollTop(0);
+      composeVisible = true;
     }
 
   });
