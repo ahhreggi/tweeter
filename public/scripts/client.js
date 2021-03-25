@@ -184,16 +184,18 @@ $(document).ready(() => {
   // Load and render existing tweets
   loadTweets();
 
-  // Listen for new tweet form submission then submit and render tweet data
-  $(".new-tweet").on("submit", submitTweetHandler);
-
+  const form = $("#new-tweet form");
+  const scrollBtn = $("#scroll-btn");
   let composeVisible = true;
 
+  // Listen for new tweet form submission then submit and render tweet data
+  $("#new-tweet form").on("submit", function(event) {
+    submitTweetHandler(event)
+  });
+
+  // Show/hide the corner compose button based on the user's position
   $(document).on("scroll", function() {
 
-    // Automatically show/hide the corner compose button based on the user's position
-    const form = $("#new-tweet form");
-    const scrollBtn = $("#scroll-btn");
     const pos = $(document).scrollTop();
     console.log(pos);
 
@@ -214,12 +216,12 @@ $(document).ready(() => {
 
   });
 
+  // Toggle the form's visibility based on the user's position on the page
   $(".compose").on("click", function() {
 
     const form = $("#new-tweet form");
     const pos = $(document).scrollTop();
 
-    // Toggle the form's visibility based on the user's position on the page
     if (pos <= 400) {
       if (!composeVisible) {
         form.slideDown();
