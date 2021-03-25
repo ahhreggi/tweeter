@@ -26,7 +26,8 @@ const updateCounter = (element) => {
   if (charsLeft >= 0 && charsLeft <= 140) {
     counter.css("color", "rgb(65, 65, 65)");
     toggleDisable(tweetBtn, false);
-    errorMsg.css("visibility", "hidden");
+    // errorMsg.css("visibility", "hidden");
+    errorMsg.fadeOut(100);
   // If the message is empty or too long, disable submit button
   } else {
     counter.css("color", "red");
@@ -34,6 +35,7 @@ const updateCounter = (element) => {
     // If the message is too long, show error
     if (charsLeft < 0) {
       errorMsg.css("visibility", "visible");
+      errorMsg.fadeIn(100);
     }
   }
 
