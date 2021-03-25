@@ -19,15 +19,6 @@ const updateCounter = (element) => {
   const hiddenField = $("#tweet-text");
   hiddenField.val(tweetMsg);
 
-  // CHECK LENGTHS (TEMP)
-  console.log(tweetMsg.length, "visible");
-  console.log($("#tweet-text").val().length, "hidden");
-
-  // CHECK VALUES (TEMP)
-  console.log(tweetMsg);
-  console.log($("#tweet-text").val());
-
-
   const tweetBtn = $(counter).siblings().find("button");
   const errorMsg = tweetBtn.siblings(".error");
 

@@ -142,10 +142,6 @@ const fetchTweetData = (form, renderFunc) => {
       })
       .catch(err => console.log(err));
 
-  } else {
-
-    alert("message length must be 1 to 140 characters");
-
   }
 
 };
