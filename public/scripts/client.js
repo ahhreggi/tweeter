@@ -184,7 +184,6 @@ const submitTweetHandler = event => {
 
 // Loads existing tweets and renders them onto the page
 const loadTweets = () => {
-  console.log("Loading tweets!");
 
   // Retrieve the array of tweets as JSON
   $.ajax({
