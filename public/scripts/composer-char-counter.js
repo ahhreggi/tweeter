@@ -21,7 +21,7 @@ const updateCounter = (element) => {
 
   // CHECK LENGTHS (TEMP)
   console.log(tweetMsg.length, "visible");
-  console.log($("#tweet-text").val().length, "hidden")
+  console.log($("#tweet-text").val().length, "hidden");
 
   // CHECK VALUES (TEMP)
   console.log(tweetMsg);
@@ -29,20 +29,20 @@ const updateCounter = (element) => {
 
 
   const tweetBtn = $(counter).siblings().find("button");
-  const errorMsg = tweetBtn.siblings(".error")
+  const errorMsg = tweetBtn.siblings(".error");
 
   // If the message is valid, enable submit button and hide errors
-  if (charsLeft >= 0 && charsLeft <=140) {
+  if (charsLeft >= 0 && charsLeft <= 140) {
     counter.css("color", "rgb(65, 65, 65)");
     toggleDisable(tweetBtn, false);
-    errorMsg.css("visibility", "hidden")
+    errorMsg.css("visibility", "hidden");
   // If the message is empty or too long, disable submit button
   } else {
     counter.css("color", "red");
     toggleDisable(tweetBtn, true);
     // If the message is too long, show error
     if (charsLeft < 0) {
-      errorMsg.css("visibility", "visible")
+      errorMsg.css("visibility", "visible");
     }
   }
 
