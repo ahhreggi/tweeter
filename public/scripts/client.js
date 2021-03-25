@@ -212,22 +212,25 @@ $(document).ready(() => {
 
   });
 
-  const arrow = $("main .arrow");
-
   $(document).on("scroll", function() {
 
-    // Scroll to top button
-    const windowHeight = $(window).height();
-    arrow.css("top", `${windowHeight - 50}px`);
-
-    // If the form is visible, automatically show/hide it based on the user's position
+    // Automatically show/hide the corner compose button based on the user's position
     const form = $("#new-tweet form");
+    const scrollBtn = $("#scroll-btn");
     const pos = $(document).scrollTop();
+    console.log(pos);
+
+    if (pos <= 450) {
+      scrollBtn.fadeOut(200);
+    } else {
+      scrollBtn.css("visibility", "visible");
+      scrollBtn.fadeIn(200);
+    }
 
     if (composeVisible) {
-      if (pos <= 450) {
+      if (pos <= 350) {
         form.slideDown();
-      } else if (pos > 460) {
+      } else if (pos > 500) {
         form.slideUp();
       }
     }
