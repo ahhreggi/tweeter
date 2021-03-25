@@ -204,9 +204,11 @@ const loadTweets = () => {
 
 // Focuses the tweet form input field
 const focusInput = () => {
+
   return setTimeout(() => {
     $("#tweet-text-input").focus();
   }, 600);
+
 };
 
 $(document).ready(() => {

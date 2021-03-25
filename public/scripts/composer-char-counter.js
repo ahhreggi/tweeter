@@ -10,6 +10,8 @@ const escape = function(str) {
 // Update counter and button style
 const updateCounter = (element) => {
 
+  console.log("UPDATING COUNTER!");
+
   const tweetMsg = escape($(element).text());
   const charsLeft = 140 - tweetMsg.length;
   const counter = $(element).parent().find(".counter");
@@ -26,7 +28,6 @@ const updateCounter = (element) => {
   if (charsLeft >= 0 && charsLeft <= 140) {
     counter.css("color", "rgb(65, 65, 65)");
     toggleDisable(tweetBtn, false);
-    // errorMsg.css("visibility", "hidden");
     errorMsg.fadeOut(100);
   // If the message is empty or too long, disable submit button
   } else {
@@ -41,8 +42,9 @@ const updateCounter = (element) => {
 
   // Ensure that input fields are clear when all text is removed
   if (charsLeft >= 140) {
-    $(element).html("");
+    $(element).text("");
     hiddenField.val("");
+    toggleDisable(tweetBtn, true);
   }
 
 };
