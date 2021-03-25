@@ -99,15 +99,19 @@ const renderTweets = (tweets) => {
 
     if (recentlyTweeted) {
       const first = tweetComponent.first();
-      first.slideUp();
+      // first.slideUp();
       first.css("display", "none");
-      // tweetComponent.first().css("background-color", "red");
 
       recentlyTweeted = false;
       setTimeout(() => {
-        // tweetComponent.first().css("background-color", "blue");
-        first.slideDown();
+        first.slideDown(500);
         first.css("display", "block");
+        first
+          .css('opacity', 0)
+          .animate(
+            { queue: true, opacity: 1 },
+            { duration: 500 }
+          );
       }, 500);
     }
     container.append(tweetComponent);
@@ -198,6 +202,13 @@ const loadTweets = () => {
 
 };
 
+// Focuses the tweet form input field
+const focusInput = () => {
+  return setTimeout(() => {
+    $("#tweet-text-input").focus();
+  }, 600);
+};
+
 $(document).ready(() => {
 
   // Load and render existing tweets
@@ -249,9 +260,7 @@ $(document).ready(() => {
       if (!composeVisible) {
         form.slideDown();
         composeVisible = true;
-        inputTO = setTimeout(() => {
-          $("#tweet-text-input").focus();
-        }, 500);
+        inputTO = focusInput();
       } else if (composeVisible) {
         clearTimeout(inputTO);
         form.slideUp();
@@ -260,9 +269,7 @@ $(document).ready(() => {
     } else if (pos > 400) {
       $(document).scrollTop(0);
       composeVisible = true;
-      inputTO = setTimeout(() => {
-        $("#tweet-text-input").focus();
-      }, 500);
+      inputTO = focusInput();
     }
 
   });
