@@ -73,14 +73,13 @@
     background-repeat: repeat-x;
     background-attachment: fixed;
     background-position: left top;
-    border: 1px solid red;
 
   }
 
   #profile-header div {
 
     position: fixed;
-    top: 30vh
+    top: 25vh
 
   }
 
