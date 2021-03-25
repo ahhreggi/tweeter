@@ -8,7 +8,7 @@
     "content": {
       "text": "If I have seen further it is by standing on the shoulders of giants"
     },
-    "created_at": 1616457144685
+    "created_at": 1616461233673
   },
   {
     "user": {
@@ -17,85 +17,8 @@
       "handle": "@rd"
     },
     "content": {
-      "text": "Je pense , donc je suis"
+      "text": "Je pense, donc je suis"
     },
-    "created_at": 1616543544686
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "Tell you what: let's get crazy today. "
-    },
-    "created_at": 1615940390000
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "Sometimes it's fun to play little games in your mountains. "
-    },
-    "created_at": 1615421990000
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "Learn to work with anything that happens. "
-    },
-    "created_at": 1614212390000
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "All kinds of beautiful little things just happen. "
-    },
-    "created_at": 1606090723000
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "Just let it sorta dance around in the sky. "
-    },
-    "created_at": 1579738723000
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "You decide where all these things are. "
-    },
-    "created_at": 1611361123000
-  },
-  {
-    "user": {
-      "name": "Bob Ross",
-      "avatars": "../images/bobross.png",
-      "handle": "@BobRoss"
-    },
-    "content": {
-      "text": "Just let it sorta dance around in the sky. "
-    },
-    "created_at": 1616458723000
+    "created_at": 1616547633673
   }
 ]
