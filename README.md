@@ -3,10 +3,20 @@
 <img src="public/images/bobross.png" alt="tweeter" width="150px">
 <p>
 <h1>Tweeter</h1>
-<p>Tweet as Bob Ross in this simple, single-page Twitter clone.</p>
+<p>A simple, single-page Twitter clone.</p>
 <p><i>let's get crazy.</i> :)
 </p>
 </div>
+
+<!-- INTRODUCTION -->
+
+## 📚 Introduction
+
+<b>Tweeter</b> is a simple, single-page Twitter clone that allows users to post tweets as [Bob Ross](https://en.wikipedia.org/wiki/Bob_Ross).
+
+Data is exchanged with a server via AJAX requests and rendered live using jQuery.
+
+<b>Built with <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, HTML, CSS, JavaScript, and [jQuery](https://jquery.com/).
 
 <!-- INSTALLATION -->
 
