@@ -30,12 +30,14 @@
 <body>
 
   <!-- Nav Bar -->
-  <nav class="sticky">
-    <span>tweeter</span>
-    <span>
+  <nav>
+    <a href="https://github.com/ahhreggi/tweeter" target="_blank">
+      <span id="logo">tweeter</span>
+    </a>
+    <a id="compose-btn">
       <div><strong>Write</strong> a new tweet</div>
-      <img class="fas-arrow" src="images/icons/arrow.png" />
-    </span>
+      <img src="images/icons/arrow.png" />
+    </a>
   </nav>
 
   <!-- Profile Header -->
@@ -48,10 +50,10 @@
     </div>
   </header>
 
-  <main class="container">
+  <main id="compose-tweet" class="container">
 
     <!-- Tweet Form -->
-    <section class="new-tweet">
+    <section id="new-tweet">
       <form method="POST" action="/tweets/">
         <label for="tweet-text">What are you humming about?</label>
         <div contenteditable id="tweet-text-input"></div>

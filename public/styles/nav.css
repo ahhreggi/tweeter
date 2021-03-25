@@ -7,20 +7,28 @@ nav {
   display: flex;
   justify-content: space-between;
   user-select: none;
+  position: sticky;
+  top: 0;
+  z-index: 9;
 }
 
-nav>span:nth-child(1) {
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#logo {
   font-family: "Bungee", sans-serif;
   font-size: 42px;
 }
 
-nav>span:nth-child(2) {
+#compose-btn {
   display: flex;
   flex-direction: column;
   cursor: pointer;
 }
 
-.fas-arrow {
+#compose-btn img {
   filter: brightness(0) invert();
   width: 25px;
   margin: auto;
@@ -31,11 +39,4 @@ nav>span:nth-child(2) {
 @keyframes action {
   0% { transform: translateY(0); }
   100% { transform: translateY(-5px); }
-}
-
-.sticky {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 9;
 }

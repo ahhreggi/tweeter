@@ -185,4 +185,29 @@ $(document).ready(() => {
   // Listen for new tweet form submission and submit tweet data to the server
   $(".new-tweet").on("submit", submitTweetHandler);
 
+  let composeVisible = true;
+
+  $("#compose-btn").on("click", function() {
+    if (composeVisible) {
+      $("#compose-tweet form").slideUp();
+      composeVisible = false;
+    } else {
+      $("#compose-tweet form").slideDown();
+      composeVisible = true;
+    }
+  });
+
+  $(document).on("scroll", function() {
+    const pos = $(document).scrollTop();
+    console.log(pos);
+    if (composeVisible) {
+
+      if (pos <= 400) {
+        $("#compose-tweet form").slideDown();
+      } else if (pos > 400) {
+        $("#compose-tweet form").slideUp();
+      }
+    }
+  });
+
 });

@@ -18,18 +18,18 @@
   visibility: hidden;
 }
 
-.new-tweet {
+#new-tweet {
   margin-top: 15px;
   padding: 15px 35px;
 }
 
-.new-tweet footer {
+#new-tweet footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.new-tweet button {
+#new-tweet button {
   display: inline-block;
   background-color: #4056a1;
   font-family: "Bungee", sans-serif;
@@ -43,30 +43,30 @@
   transition: 0.1s;
 }
 
-.new-tweet button:active {
+#new-tweet button:active {
   background-color: #374a8b;
 }
 
-.new-tweet button:hover {
+#new-tweet button:hover {
   background-color: #506bc7;
 }
 
-.new-tweet .btn-disable,
-.new-tweet .btn-disable:hover,
-.new-tweet .btn-disable:active {
+#new-tweet .btn-disable,
+#new-tweet .btn-disable:hover,
+#new-tweet .btn-disable:active {
   background-color: #4056a1;
   opacity: 0.7;
   cursor: default;
 }
 
-.new-tweet .error {
+#new-tweet .error {
   color: rgb(231, 87, 87);
   font-size: 16px;
   margin-left: 5px;
   visibility: hidden;
 }
 
-.counter {
+#new-tweet .counter {
   font-family: "Bungee", sans-serif;
   color: rgb(65, 65, 65);
   font-size: 20px;
