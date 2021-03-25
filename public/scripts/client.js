@@ -241,22 +241,34 @@ $(document).ready(() => {
   // Toggle the form's visibility based on the user's position on the page
   $(".compose").on("click", function() {
 
-    const form = $("#new-tweet form");
     const pos = $(document).scrollTop();
+    const form = $("#new-tweet form");
+    let inputTO;
 
     if (pos <= 400) {
       if (!composeVisible) {
         form.slideDown();
         composeVisible = true;
+        inputTO = setTimeout(() => {
+          $("#tweet-text-input").focus();
+        }, 500);
       } else if (composeVisible) {
+        clearTimeout(inputTO);
         form.slideUp();
         composeVisible = false;
       }
     } else if (pos > 400) {
       $(document).scrollTop(0);
       composeVisible = true;
+      inputTO = setTimeout(() => {
+        $("#tweet-text-input").focus();
+      }, 500)
     }
 
   });
+
+  $("#new-tweet").on("click", function() {
+    $("#tweet-text-input").focus();
+  })
 
 });
