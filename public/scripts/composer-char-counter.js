@@ -20,10 +20,6 @@ const updateCounter = (element) => {
   const hiddenField = $("#tweet-text");
   hiddenField.val(tweetMsg);
 
-  // temp
-  console.log(tweetMsg);
-  console.log(hiddenField.val());
-
   const tweetBtn = $(counter).siblings().find("button");
   const errorMsg = tweetBtn.siblings(".error");
 

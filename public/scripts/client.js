@@ -89,39 +89,20 @@ const createTweetElement = (tweetData) => {
 
 };
 
-// Construct tweets in the given tweets array and append them to the tweets container
-const renderTweets = (tweets, recentlyTweeted = false) => {
+// Submit handler
+const submitTweetHandler = event => {
 
-  const container = $("#all-tweets");
-  for (const tweetData of tweets) {
-    const tweetComponent = createTweetElement(tweetData);
-
-    // Animate the new tweet as it appears
-    if (recentlyTweeted) {
-      const first = tweetComponent.first();
-      first.css("display", "none");
-      recentlyTweeted = false;
-      setTimeout(() => {
-        first.slideDown(500);
-        first.css("display", "block");
-        first
-          .css('opacity', 0)
-          .animate(
-            { queue: true, opacity: 1 },
-            { duration: 500 }
-          );
-      }, 200);
-    }
-    container.append(tweetComponent);
-  }
-
-  const feedEnd = $("<span>you're all caught up!</span>");
-  container.append(feedEnd);
+  // Prevent the default form submission behavior
+  event.preventDefault();
+  // Retrieve the hidden form component
+  const form = $("#tweet-text");
+  // Submit an ajax request using the form data
+  fetchTweetData(form, loadTweets);
 
 };
 
 // Submits a new tweet to the server then renders the response data received
-const fetchTweetData = (form, renderFunc, bobRoss = false) => {
+const fetchTweetData = (form, loaderFunc, bobRoss = false) => {
 
   // Retrieve the tweet data from the form
   const tweetMessage = form.val();
@@ -164,32 +145,11 @@ const fetchTweetData = (form, renderFunc, bobRoss = false) => {
         // Clears the form
         clearForm();
         // Reload all tweets (to update timestamps)
-        renderFunc(true);
+        loaderFunc(true);
       })
       .catch(err => console.log(err));
 
   }
-
-};
-
-// Clears the new tweet form
-const clearForm = () => {
-  // Clear the visible input field and hidden form
-  const inputField = $("#tweet-text-input");
-  $("#tweet-text-input").text("");
-  // Update the tweet form counter (reset to empty)
-  updateCounter(inputField); // eslint-disable-line
-};
-
-// Submit handler
-const submitTweetHandler = event => {
-
-  // Prevent the default form submission behavior
-  event.preventDefault();
-  // Retrieve the hidden form component
-  const form = $("#tweet-text");
-  // Submit an ajax request using the form data
-  fetchTweetData(form, loadTweets);
 
 };
 
@@ -212,17 +172,39 @@ const loadTweets = (recentlyTweeted = false) => {
 
 };
 
-// Focuses the tweet form input field
-const focusInput = (delay = 500) => {
+// Construct tweets in the given tweets array and append them to the tweets container
+const renderTweets = (tweets, recentlyTweeted = false) => {
 
-  setTimeout(() => {
-    $("#tweet-text-input").focus();
-  }, delay);
+  const container = $("#all-tweets");
+  for (const tweetData of tweets) {
+    const tweetComponent = createTweetElement(tweetData);
+
+    // Animate the new tweet as it appears
+    if (recentlyTweeted) {
+      const first = tweetComponent.first();
+      first.css("display", "none");
+      recentlyTweeted = false;
+      setTimeout(() => {
+        first.slideDown(500);
+        first.css("display", "block");
+        first
+          .css('opacity', 0)
+          .animate(
+            { queue: true, opacity: 1 },
+            { duration: 500 }
+          );
+      }, 200);
+    }
+    container.append(tweetComponent);
+  }
+
+  const feedEnd = $("<span>you're all caught up!</span>");
+  container.append(feedEnd);
 
 };
 
 // Displays the new tweet form in an animation if show is true, hides it otherwise.
-const showForm = (form, show, speed = 500, delay = 0) => {
+const toggleForm = (form, show = true, speed = 400, delay = 0) => {
 
   setTimeout(() => {
     if (show) {
@@ -248,6 +230,24 @@ const showForm = (form, show, speed = 500, delay = 0) => {
 
 };
 
+// Clears the new tweet form
+const clearForm = () => {
+  // Clear the visible input field and hidden form
+  const inputField = $("#tweet-text-input");
+  $("#tweet-text-input").text("");
+  // Update the tweet form counter (reset to empty)
+  updateCounter(inputField); // eslint-disable-line
+};
+
+// Focuses the tweet form input field
+const focusInput = (delay = 500) => {
+
+  setTimeout(() => {
+    $("#tweet-text-input").focus();
+  }, delay);
+
+};
+
 $(document).ready(() => {
 
   const form = $("#new-tweet form");
@@ -258,7 +258,7 @@ $(document).ready(() => {
   loadTweets();
 
   // Focus the input field whenever the user clicks anywhere on the form
-  form.on("click", () => focusInput());
+  form.on("click", () => focusInput(0));
 
   // Listen for new tweet form submission then submit and render the tweet data
   form.on("submit", (event) => submitTweetHandler(event));
@@ -294,17 +294,17 @@ $(document).ready(() => {
     // Toggle the form if the user is at the top of the page
     if (position <= 250) {
       if (!composeVisible) {
-        showForm(form, true, 500);
+        toggleForm(form, true);
         composeVisible = true;
       } else if (composeVisible) {
-        showForm(form, false);
+        toggleForm(form, false);
         composeVisible = false;
       }
     // Show the form regardless of current state if the user is lower on the page
     } else if (position > 250) {
       $(document).scrollTop(0);
       if (!composeVisible) {
-        showForm(form, true, 500, 500);
+        toggleForm(form, true, 500, 500);
         composeVisible = true;
       } else {
         focusInput();
