@@ -2,7 +2,7 @@
 <div align="center">
 <img src="public/images/bobross.png" alt="tweeter" width="150px">
 <p>
-<h1>Tweeter</h1>
+<h1>Tweeter: The Joy of Tweeting</h1>
 <p>A single page Twitter clone that allows users to tweet like Bob Ross.
 </p>
 
