@@ -39,4 +39,4 @@ Tweet data is exchanged with a server via AJAX requests and rendered live using 
 
 ## 📷 Screenshots
 
-<img src="./public/images/screenshots/tweeter.png" alt="screenshot">
+<img src="./public/images/screenshots/tweeter-bobross.png" alt="screenshot">
