@@ -179,7 +179,7 @@ const clearForm = () => {
   $("#tweet-text-input").text("");
   // Update the tweet form counter (reset to empty)
   updateCounter(inputField); // eslint-disable-line
-}
+};
 
 // Submit handler
 const submitTweetHandler = event => {
