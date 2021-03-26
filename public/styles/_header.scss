@@ -1,0 +1,62 @@
+@import "global";
+
+#profile-header {
+
+  position: relative;
+  height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 36px;
+  color: white;
+  background-image: url("https://image.pbs.org/video-assets/MQWKWFk-asset-mezzanine-16x9-Sd4ev3E.jpg");
+  background-size:cover;
+  background-position: center;
+
+}
+
+#profile-header div {
+  width: 30%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile-header img {
+  width: 200px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 100%;
+}
+
+#profile-header img:hover {
+  width: 205px;
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 1200px) {
+
+  #profile-header {
+
+    height: 100vh;
+    width: 60%;
+    background-attachment: fixed;
+    position: sticky;
+    background-position: top;
+    top: 0px;
+    /* border: 1px solid red; */
+    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.5);
+
+  }
+
+  #profile-header div {
+
+    position: fixed;
+    top: 25vh
+
+  }
+
+}
