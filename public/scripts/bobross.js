@@ -513,10 +513,10 @@ const quotes = [
 ];
 
 // Returns a random Bob Ross quote
-const getQuote = () => {
-  return quotes[Math.floor(Math.random() * quotes.length)];
+const getQuote = (array = true) => {
+  const quote = quotes[Math.floor(Math.random() * quotes.length)];
+  return array ? quote.split(" ").map(word => word + " ") : quote;
 };
-
 
 let bobRossMode = false;
 $(document).ready(() => {
@@ -524,10 +524,15 @@ $(document).ready(() => {
   const inputField = $("#tweet-text-input");
   const bobRoss = $("#bob-ross");
   let quote = getQuote();
+  let charCount = 0;
+  let message = "";
+  let limitReached = false;
 
   // If the user clicks Bob Ross' profile picture, toggle Bob Ross mode
   bobRoss.on("click", function() {
 
+    charCount = 0;
+    message = "";
     clearForm(); // eslint-disable-line
 
     if (bobRossMode) {
@@ -542,15 +547,42 @@ $(document).ready(() => {
   });
 
   // If bobRossMode is enabled, type out a Bob Ross quote as the user types
-  if (bobRossMode) {
+  inputField.on("input", function() {
 
-    inputField.on("input", function() {
+    if (bobRossMode) {
+      if (charCount > quote.length - 1) {
+        quote = getQuote();
+        charCount = 0;
+        const quoteLength = Array.isArray(quote) ? quote.join(" ").length : quote.length;
+        if (message.length + quoteLength >= 140) {
+          limitReached = true;
+        } else {
+          message += " ";
+        }
+      }
+      if (!limitReached) {
+        if (quote[charCount] !== undefined) {
+          message += quote[charCount];
+          inputField.html(message);
+        }
+        charCount++;
+      } else {
+        inputField.html(message);
+      }
+      // Move cursor to end
+      inputField.focus();
+      document.execCommand("selectAll", false, null);
+      document.getSelection().collapseToEnd();
+    }
 
+  });
 
-
-    });
-
-  }
-  // Every time the form is cleared, a new Bob Ross quote is generated
+  $("#new-tweet form").on("submit", () => {
+    quote = getQuote();
+    charCount = 0;
+    message = "";
+    limitReached = false;
+    console.log("yo");
+  });
 
 });

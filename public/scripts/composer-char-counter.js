@@ -66,7 +66,9 @@ $(document).ready(() => {
   // Dynamically update the counter as a user types
   $("#tweet-text-input").on("input", function() {
 
-    updateCounter(this);
+    setTimeout(() => {
+      updateCounter(this);
+    }, 50);
 
   });
 
