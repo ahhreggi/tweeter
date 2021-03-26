@@ -10,7 +10,7 @@
   flex-direction: column;
   font-size: 36px;
   color: $title;
-  background-image: url("https://image.pbs.org/video-assets/MQWKWFk-asset-mezzanine-16x9-Sd4ev3E.jpg");
+  background-image: $header-img;
   background-size: cover;
   background-position: center;
 
@@ -27,11 +27,12 @@
     width: 200px;
     border: 2px solid $title;
     border-radius: 100%;
-  }
 
-  img:hover {
-    width: 201px;
-    box-shadow: 1px 5px 10px $shadow;
+    &:hover {
+      width: 201px;
+      box-shadow: 5px 5px 10px $shadow;
+    }
+
   }
 
 }

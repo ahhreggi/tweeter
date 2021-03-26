@@ -93,7 +93,7 @@ nav a {
           flex-direction: column;
   font-size: 36px;
   color: #ffffff;
-  background-image: url("https://image.pbs.org/video-assets/MQWKWFk-asset-mezzanine-16x9-Sd4ev3E.jpg");
+  background-image: url("../images/painting.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -124,8 +124,8 @@ nav a {
 
 #profile-header img:hover {
   width: 201px;
-  -webkit-box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
-          box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 @media only screen and (min-width: 1200px) {
