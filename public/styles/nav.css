@@ -31,7 +31,7 @@ nav a {
 }
 
 .arrow {
-  filter: brightness(0) invert();
+  filter: brightness(0);  /* invert() */
   width: 15px;
   margin: auto;
   padding-top: 5px;

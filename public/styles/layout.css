@@ -46,7 +46,7 @@ img, button {
 }
 
 #scroll-btn img {
-  filter: brightness(25%) invert() hue-rotate(63deg);
+  filter: brightness(25%) hue-rotate(63deg);  /* invert() */
   height: 60px;
   width: 40px;
   transform: rotate(180deg);
@@ -63,7 +63,7 @@ img, button {
 
 #scroll-btn:hover img,
 #scroll-btn:active img {
-  filter: brightness(0%) invert();
+  filter: brightness(0%); /* invert() */
 }
 
 /*  MOBILE */
