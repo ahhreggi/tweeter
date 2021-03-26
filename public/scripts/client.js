@@ -1,5 +1,3 @@
-let recentlyTweeted = false;
-
 // Returns a string describing the relative time since the given timestamp (milliseconds).
 const convertTimestamp = (timestamp) => {
 
@@ -92,13 +90,13 @@ const createTweetElement = (tweetData) => {
 };
 
 // Construct tweets in the given tweets array and append them to the tweets container
-const renderTweets = (tweets) => {
+const renderTweets = (tweets, recentlyTweeted = false) => {
 
   const container = $("#all-tweets");
   for (const tweetData of tweets) {
     const tweetComponent = createTweetElement(tweetData);
 
-    // Animate the first tweet as it appears
+    // Animate the new tweet as it appears
     if (recentlyTweeted) {
       const first = tweetComponent.first();
       first.css("display", "none");
@@ -168,8 +166,7 @@ const fetchTweetData = (form, renderFunc, bobRoss = false) => {
         // Update the tweet form counter (reset to empty)
         updateCounter(inputField); // eslint-disable-line
         // Reload all tweets (to update timestamps)
-        recentlyTweeted = true;
-        renderFunc();
+        renderFunc(true);
       })
       .catch(err => console.log(err));
 
@@ -190,7 +187,7 @@ const submitTweetHandler = event => {
 };
 
 // Loads existing tweets and renders them onto the page
-const loadTweets = () => {
+const loadTweets = (recentlyTweeted = false) => {
 
   // Retrieve the array of tweets as JSON
   $.ajax({
@@ -203,7 +200,7 @@ const loadTweets = () => {
       // Clear the page of existing elements
       $("#all-tweets").empty();
       // Render the sorted tweets
-      renderTweets(sortedTweets);
+      renderTweets(sortedTweets, recentlyTweeted);
     });
 
 };
