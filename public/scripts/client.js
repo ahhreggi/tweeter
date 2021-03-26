@@ -233,7 +233,8 @@ $(document).ready(() => {
   // Show/hide the corner compose button based on the user's position
   $(document).on("scroll", function() {
 
-    const pos = $(document).scrollTop();
+    const pos = $(this).scrollTop();
+    const endMsg = $("#all-tweets > span");
 
     if (pos <= 450) {
       scrollBtn.fadeOut(200);
@@ -250,6 +251,13 @@ $(document).ready(() => {
       }
     }
 
+    // End of feed message
+    console.log($(window).scrollTop() + $(window).height(), $(document).height())
+    if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+      endMsg.css("opacity", "1");
+    } else {
+      endMsg.css("opacity", "0");
+    }
   });
 
   // Toggle the form's visibility based on the user's position on the page

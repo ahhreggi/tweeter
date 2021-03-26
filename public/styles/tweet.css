@@ -6,7 +6,8 @@
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-  color: rgb(175, 188, 202)
+  color: rgb(175, 188, 202);
+  transition: 1s;
 }
 
 .tweet {
