@@ -2,88 +2,87 @@
 <html lang="en" id="top">
 
 <head>
-  <!-- Meta Information -->
-  <title>Tweeter - Home Page</title>
+    <!-- Meta Information -->
+    <title>Tweeter - Home Page</title>
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
 
-  <!-- External Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- External Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
-  <!-- App CSS -->
-  <link rel="stylesheet" href="/styles/index.css" type="text/css" />
+    <!-- App CSS -->
+    <link rel="stylesheet" href="/styles/index.css" type="text/css" />
 
-  <!-- External JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- External JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-  <!-- App JS -->
-  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-  <script type="text/javascript" src="/scripts/client.js"></script>
+    <!-- App JS -->
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="/scripts/client.js"></script>
+
+    <!-- Font Awesome: https://fontawesome.com/license -->
+    <!-- Flaticon: https://www.flaticon.com/ -->
 </head>
 
 <body>
 
-  <!-- Nav Bar -->
-  <nav>
-    <a href="https://github.com/ahhreggi/tweeter" target="_blank">
-      <span id="logo">tweeter</span>
-    </a>
-    <a id="compose-btn" class="compose">
-      <div><strong>Write</strong> a new tweet</div>
-      <img class="arrow" src="images/icons/arrow.png" alt="arrow icon" draggable="false" />
-    </a>
-  </nav>
-
-  <div>
-
-    <!-- Profile Header -->
-    <header id="profile-header">
-
-      <div>
-        <a href="https://en.wikipedia.org/wiki/Bob_Ross" target="_blank">
-          <img src="/images/bobross.png" />
+    <!-- Nav Bar -->
+    <nav>
+        <a href="https://github.com/ahhreggi/tweeter" target="_blank">
+            <span id="logo">tweeter</span>
         </a>
-        <span><strong>Bob</strong> Ross</span>
-      </div>
+        <a id="compose-btn" class="compose">
+            <div><strong>Write</strong> a new tweet</div>
+            <img class="arrow" src="images/icons/arrow.png" alt="arrow icon" draggable="false" />
+        </a>
+    </nav>
 
-    </header>
+    <div>
 
-    <main class="container">
+        <!-- Profile Header -->
+        <header id="profile-header">
 
-      <!-- Tweet Form -->
-      <section id="new-tweet">
-        <form method="POST" action="/tweets/">
-          <label for="tweet-text">What are you humming about?</label>
-          <div contenteditable id="tweet-text-input"></div>
-          <textarea name="text" id="tweet-text" class="hidden"></textarea>
-          <footer>
             <div>
-            <button class="btn-disable" type="submit" disabled>Tweet</button>
-            <span class="error">too long</span>
+                <a href="https://en.wikipedia.org/wiki/Bob_Ross" target="_blank">
+                    <img src="/images/bobross.png" />
+                </a>
+                <span><strong>Bob</strong> Ross</span>
             </div>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </footer>
-        </form>
-      </section>
 
-      <!-- All Tweets -->
-      <section id="all-tweets" class="container">
-      </section>
+        </header>
 
-      <div id="scroll-btn" class="compose">
-        <img class="" src="images/icons/arrow.png" alt="arrow icon" draggable="false" />
-      </div>
+        <main class="container">
 
+            <!-- Tweet Form -->
+            <section id="new-tweet">
+                <form method="POST" action="/tweets/">
+                    <label for="tweet-text">What are you humming about?</label>
+                    <div contenteditable id="tweet-text-input"></div>
+                    <textarea name="text" id="tweet-text" class="hidden"></textarea>
+                    <footer>
+                        <div>
+                            <button class="btn-disable" type="submit" disabled>Tweet</button>
+                            <span class="error">too long</span>
+                        </div>
+                        <output name="counter" class="counter" for="tweet-text">140</output>
+                    </footer>
+                </form>
+            </section>
 
-    </main>
+            <!-- All Tweets -->
+            <section id="all-tweets" class="container">
+            </section>
 
-  </div>
+            <div id="scroll-btn" class="compose">
+                <img class="" src="images/icons/arrow.png" alt="arrow icon" draggable="false" />
+            </div>
+
+        </main>
+
+    </div>
 
 </body>
 
 </html>
-
-<!-- Font Awesome: https://fontawesome.com/license -->
-<!-- Flaticon: https://www.flaticon.com/ -->
