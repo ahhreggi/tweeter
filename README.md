@@ -6,7 +6,7 @@
 <p>A single page Twitter clone that allows users to tweet like Bob Ross.
 </p>
 
-<p>Built with <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, HTML, CSS/<a href="https://sass-lang.com/">SASS</a>, JavaScript, and <a href="https://jquery.com">jQuery</a>.</p>
+<p>Built with <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, HTML, CSS/<a href="https://sass-lang.com/">SASS</a>, JavaScript, <a href="https://jquery.com">jQuery</a>, and hosted with <a href="https://www.heroku.com/">Heroku</a></p>
 
 <b><a href="https://ahhreggi-tweeter.herokuapp.com/" target="_blank">
    » View Live Demo «
