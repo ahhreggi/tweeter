@@ -136,7 +136,7 @@ const fetchTweetData = (form, renderFunc, bobRoss = false) => {
         "name": "Bob Ross",
         "avatars": "../images/bobross.png",
         "handle": "@BobRoss"
-      }
+      };
     }
     const tweetData = {
       "user": userInfo,
@@ -229,16 +229,16 @@ const showForm = (form, show, speed = 500, delay = 0) => {
       focusInput();
     } else {
       form
-      .css('opacity', 1)
-      .animate(
-        { queue: true, opacity: 0 },
-        { duration: speed }
+        .css('opacity', 1)
+        .animate(
+          { queue: true, opacity: 0 },
+          { duration: speed }
         );
-        form.slideUp(speed);
+      form.slideUp(speed);
     }
-  }, delay)
+  }, delay);
 
-}
+};
 
 $(document).ready(() => {
 
