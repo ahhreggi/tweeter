@@ -579,8 +579,7 @@ $(document).ready(() => {
   // If the user clicks Bob Ross' profile picture, toggle Bob Ross mode
   bobRoss.on("click", function() {
 
-    charCount = 0;
-    message = "";
+    resetBobRoss();
     clearForm(); // eslint-disable-line
 
     if (bobRossMode) {
