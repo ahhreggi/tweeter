@@ -134,10 +134,10 @@ const fetchTweetData = (form, loaderFunc, useBobRoss = false) => {
 
     // Submit a post request with the tweet data
     $.ajax({
-      url: "/tweets",
-      method: "POST",
-      data: data
-    })
+        url: "/tweets",
+        method: "POST",
+        data: data
+      })
       .then(() => {
         clearForm();
         // Reload all tweets (to update timestamps)
@@ -154,9 +154,9 @@ const loadTweets = (recentlyTweeted = false) => {
 
   // Retrieve the array of tweets as JSON
   $.ajax({
-    url: "/tweets",
-    method: "GET"
-  })
+      url: "/tweets",
+      method: "GET"
+    })
     .then(tweets => {
       // Sort the data array by timestamp (most recent to oldest)
       const sortedTweets = tweets.sort((tweet1, tweet2) => tweet1.created_at - tweet2.created_at).reverse();
@@ -185,10 +185,12 @@ const renderTweets = (tweets, recentlyTweeted = false) => {
         first.css("display", "block");
         first
           .css('opacity', 0)
-          .animate(
-            { queue: true, opacity: 1 },
-            { duration: 500 }
-          );
+          .animate({
+            queue: true,
+            opacity: 1
+          }, {
+            duration: 500
+          });
       }, 200);
     }
     container.append(tweetComponent);
@@ -207,18 +209,22 @@ const toggleForm = (form, show = true, speed = 400, delay = 0) => {
       form.slideDown(speed);
       form
         .css("opacity", 0)
-        .animate(
-          { queue: true, opacity: 1 },
-          { duration: speed }
-        );
+        .animate({
+          queue: true,
+          opacity: 1
+        }, {
+          duration: speed
+        });
       focusInput();
     } else {
       form
         .css("opacity", 1)
-        .animate(
-          { queue: true, opacity: 0 },
-          { duration: speed }
-        );
+        .animate({
+          queue: true,
+          opacity: 0
+        }, {
+          duration: speed
+        });
       form.slideUp(speed);
       clearForm();
     }
@@ -263,10 +269,12 @@ $(document).ready(() => {
   feed.slideDown(800);
   feed
     .css("opacity", 0)
-    .animate(
-      { queue: true, opacity: 1 },
-      { duration: 400 }
-    );
+    .animate({
+      queue: true,
+      opacity: 1
+    }, {
+      duration: 400
+    });
 
   setTimeout(() => {
     $(document).scrollTop(0);
@@ -317,7 +325,7 @@ $(document).ready(() => {
         toggleForm(form, false);
         composeVisible = false;
       }
-    // Show the form regardless of current state if the user is lower on the page
+      // Show the form regardless of current state if the user is lower on the page
     } else if (position > 250) {
       $(document).scrollTop(0);
       if (!composeVisible) {

@@ -554,18 +554,22 @@ $(document).ready(() => {
       instructions.slideDown(500);
       instructions
         .css("opacity", 0)
-        .animate(
-          { queue: true, opacity: 1 },
-          { duration: 500 }
-        );
+        .animate({
+          queue: true,
+          opacity: 1
+        }, {
+          duration: 500
+        });
       showingInstructions = true;
     } else {
       instructions
         .css("opacity", 1)
-        .animate(
-          { queue: true, opacity: 0 },
-          { duration: 500 }
-        );
+        .animate({
+          queue: true,
+          opacity: 0
+        }, {
+          duration: 500
+        });
       instructions.slideUp(500);
       showingInstructions = false;
     }

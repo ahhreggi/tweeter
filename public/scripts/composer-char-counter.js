@@ -28,7 +28,7 @@ const updateCounter = (element) => {
     counter.css("color", "rgb(65, 65, 65)");
     toggleDisable(tweetBtn, false);
     errorMsg.fadeOut(100);
-  // If the message is empty or too long, disable submit button
+    // If the message is empty or too long, disable submit button
   } else {
     counter.css("color", "red");
     toggleDisable(tweetBtn, true);
