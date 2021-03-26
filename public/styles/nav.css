@@ -35,10 +35,10 @@ nav a {
   width: 15px;
   margin: auto;
   padding-top: 5px;
-  animation: action 0.5s infinite alternate;
+  animation: bounce 0.5s infinite alternate;
 }
 
-@keyframes action {
+@keyframes bounce {
   0% { transform: translateY(0); }
   100% { transform: translateY(-5px); }
 }

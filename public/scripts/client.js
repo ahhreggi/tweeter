@@ -236,7 +236,7 @@ $(document).ready(() => {
     const pos = $(this).scrollTop();
     const endMsg = $("#all-tweets > span");
 
-    if (pos <= 450) {
+    if (pos <= 350) {
       scrollBtn.fadeOut(200);
     } else {
       scrollBtn.css("visibility", "visible");
@@ -252,11 +252,12 @@ $(document).ready(() => {
     }
 
     // End of feed message
-    console.log($(window).scrollTop() + $(window).height(), $(document).height())
-    if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+    if ($(window).scrollTop() + $(window).height() === $(this).height()) {
       endMsg.css("opacity", "1");
+      // scrollBtn.css("opacity", "0.7");
     } else {
       endMsg.css("opacity", "0");
+      // scrollBtn.css("opacity", "0.5");
     }
   });
 
@@ -267,7 +268,7 @@ $(document).ready(() => {
     const form = $("#new-tweet form");
     let inputTO;
 
-    if (pos <= 400) {
+    if (pos <= 350) {
       if (!composeVisible) {
         form.slideDown();
         composeVisible = true;
@@ -277,7 +278,7 @@ $(document).ready(() => {
         form.slideUp();
         composeVisible = false;
       }
-    } else if (pos > 400) {
+    } else if (pos > 350) {
       $(document).scrollTop(0);
       composeVisible = true;
       inputTO = focusInput();
