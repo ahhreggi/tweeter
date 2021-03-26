@@ -318,9 +318,8 @@ nav a {
   height: 18px;
   width: 18px;
   margin: 5px;
-  -webkit-filter: hue-rotate(45deg) saturate(30%) brightness(70%);
-          filter: hue-rotate(45deg) saturate(30%) brightness(70%);
-  /* invert() */
+  -webkit-filter: saturate(100%) brightness(70%);
+          filter: saturate(100%) brightness(70%);
   cursor: pointer;
   border: 1px;
   padding: 1px;
@@ -338,15 +337,13 @@ nav a {
 }
 
 .tweet:hover footer img {
-  -webkit-filter: hue-rotate(45deg) saturate(30%) brightness(50%);
-          filter: hue-rotate(45deg) saturate(30%) brightness(50%);
-  /* invert() */
+  -webkit-filter: saturate(100%) brightness(50%);
+          filter: saturate(100%) brightness(50%);
 }
 
 .tweet:hover footer img:hover {
-  -webkit-filter: hue-rotate(45deg) saturate(100%) brightness(70%);
-          filter: hue-rotate(45deg) saturate(100%) brightness(70%);
-  /* invert() */
+  -webkit-filter: saturate(100%) brightness(70%);
+          filter: saturate(100%) brightness(70%);
 }
 
 .tweet:hover footer img:active {

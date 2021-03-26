@@ -62,7 +62,7 @@
       height: 18px;
       width: 18px;
       margin: 5px;
-      filter: hue-rotate(45deg) saturate(30%) brightness(70%); /* invert() */
+      filter: saturate(100%) brightness(70%);
       cursor: pointer;
       border: 1px;
       padding: 1px;
@@ -80,10 +80,10 @@
     }
 
     footer img {
-      filter: hue-rotate(45deg) saturate(30%) brightness(50%); /* invert() */
+      filter: saturate(100%) brightness(50%);
 
       &:hover {
-        filter: hue-rotate(45deg) saturate(100%) brightness(70%); /* invert() */
+        filter: saturate(100%) brightness(70%);
       }
 
       &:active {
