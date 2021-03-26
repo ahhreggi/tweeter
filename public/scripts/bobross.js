@@ -528,6 +528,14 @@ $(document).ready(() => {
   let message = "";
   let limitReached = false;
 
+  const resetBobRoss = () => {
+    quote = getQuote();
+    charCount = 0;
+    message = "";
+    limitReached = false;
+    console.log("reset!");
+  };
+
   // If the user clicks Bob Ross' profile picture, toggle Bob Ross mode
   bobRoss.on("click", function() {
 
@@ -577,12 +585,23 @@ $(document).ready(() => {
 
   });
 
+  $(document).on('keydown', function(event) {
+
+    if (bobRossMode) {
+      if (event.key === "Escape") {
+        resetBobRoss();
+        clearForm(); // eslint-disable-line
+      }
+    }
+
+  });
+
   $("#new-tweet form").on("submit", () => {
-    quote = getQuote();
-    charCount = 0;
-    message = "";
-    limitReached = false;
-    console.log("yo");
+
+    if (bobRossMode) {
+      resetBobRoss();
+    }
+
   });
 
 });

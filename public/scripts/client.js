@@ -139,7 +139,6 @@ const fetchTweetData = (form, loaderFunc, useBobRoss = false) => {
       data: data
     })
       .then(() => {
-        // Clears the form
         clearForm();
         // Reload all tweets (to update timestamps)
         loaderFunc(true);
