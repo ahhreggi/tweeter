@@ -88,19 +88,18 @@ const createTweetElement = (tweetData) => {
 };
 
 // Submit handler
-const submitTweetHandler = event => {
-
+const submitTweetHandler = (event, useBobRoss = true) => {
   // Prevent the default form submission behavior
   event.preventDefault();
   // Retrieve the hidden form component
   const form = $("#tweet-text");
   // Submit an ajax request using the form data
-  fetchTweetData(form, loadTweets);
+  fetchTweetData(form, loadTweets, useBobRoss);
 
 };
 
 // Submits a new tweet to the server then renders the response data received
-const fetchTweetData = (form, loaderFunc, bobRoss = true) => {
+const fetchTweetData = (form, loaderFunc, useBobRoss = false) => {
 
   // Retrieve the tweet data from the form
   const tweetMessage = form.val();
@@ -111,7 +110,7 @@ const fetchTweetData = (form, loaderFunc, bobRoss = true) => {
 
     // Construct the tweet data object
     let userInfo = {};
-    if (bobRoss) {
+    if (useBobRoss) {
       userInfo = {
         "name": "Bob Ross",
         "avatars": "../images/bobross.png",
@@ -208,7 +207,7 @@ const toggleForm = (form, show = true, speed = 400, delay = 0) => {
     if (show) {
       form.slideDown(speed);
       form
-        .css('opacity', 0)
+        .css("opacity", 0)
         .animate(
           { queue: true, opacity: 1 },
           { duration: speed }
@@ -216,7 +215,7 @@ const toggleForm = (form, show = true, speed = 400, delay = 0) => {
       focusInput();
     } else {
       form
-        .css('opacity', 1)
+        .css("opacity", 1)
         .animate(
           { queue: true, opacity: 0 },
           { duration: speed }
@@ -252,14 +251,35 @@ $(document).ready(() => {
   const scrollBtn = $("#scroll-btn");
   let composeVisible = true;
 
+  form.css("opacity", 0);
+  form.css("display", "none");
+
   // Load and render existing tweets
   loadTweets();
+
+  // Animate initial loading of tweets
+  const feed = $("#all-tweets");
+  feed.css("opacity", 0);
+  feed.css("display", "none");
+  feed.slideDown(800);
+  feed
+    .css("opacity", 0)
+    .animate(
+      { queue: true, opacity: 1 },
+      { duration: 400 }
+    );
+
+  setTimeout(() => {
+    $(document).scrollTop(0);
+    toggleForm(form, true, 800, 500);
+  }, 100);
+
 
   // Focus the input field whenever the user clicks anywhere on the form
   form.on("click", () => focusInput(0));
 
   // Listen for new tweet form submission then submit and render the tweet data
-  form.on("submit", (event) => submitTweetHandler(event));
+  form.on("submit", (event) => submitTweetHandler(event, bobRossMode)); // eslint-disable-line
 
   // Alter styles of elements at different scroll positions on the page
   $(document).on("scroll", function() {

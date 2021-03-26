@@ -27,10 +27,12 @@
     width: 200px;
     border: 2px solid $title;
     border-radius: 100%;
+    filter: grayscale(100);
 
     &:hover {
       width: 201px;
       box-shadow: 5px 5px 10px $shadow;
+      cursor: pointer;
     }
 
   }

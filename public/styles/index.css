@@ -120,12 +120,15 @@ nav a {
   width: 200px;
   border: 2px solid #ffffff;
   border-radius: 100%;
+  -webkit-filter: grayscale(100);
+          filter: grayscale(100);
 }
 
 #profile-header img:hover {
   width: 201px;
   -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
           box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 1200px) {

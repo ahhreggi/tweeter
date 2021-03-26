@@ -20,6 +20,7 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="/scripts/bobross.js"></script>
     <script type="text/javascript" src="/scripts/client.js"></script>
 
     <!-- Font Awesome: https://fontawesome.com/license -->
@@ -33,10 +34,10 @@
         <a href="https://github.com/ahhreggi/tweeter" target="_blank">
             <span id="logo">tweeter</span>
         </a>
-        <a id="compose-btn" class="compose">
+        <div id="compose-btn" class="compose">
             <div><strong>Write</strong> a new tweet</div>
             <img class="arrow" src="images/icons/arrow.png" alt="arrow icon" draggable="false" />
-        </a>
+        </div>
     </nav>
 
     <div>
@@ -45,9 +46,7 @@
         <header id="profile-header">
 
             <div>
-                <a href="https://en.wikipedia.org/wiki/Bob_Ross" target="_blank">
-                    <img src="/images/bobross.png" />
-                </a>
+                <img id="bob-ross" src="/images/bobross.png" />
                 <span><strong>Bob</strong> Ross</span>
             </div>
 
