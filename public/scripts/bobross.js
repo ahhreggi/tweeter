@@ -1,5 +1,5 @@
 const quotes = [
-  "'Course I make some mistakes at home, and we call those \"abstracts\"",
+  "'Course I make some mistakes at home, and we call those \"abstracts\".",
   "(chuckles) Just beat the devil out of it.",
   "...right on the edge of the blade...",
   "...three hairs and some air...",
@@ -450,7 +450,7 @@ const quotes = [
   "We're ready to get serious with this.",
   "We've got a conglomeration going on there!",
   "Whatever works is good.",
-  "When I finally got to Alaska, whew boy, I just went crazy",
+  "When I finally got to Alaska, whew boy, I just went crazy.",
   "When the birds take over, I'll have friends!",
   "Where are we going with this?",
   "Where do the clouds live in your world?",
