@@ -120,6 +120,7 @@ const renderTweets = (tweets, recentlyTweeted = false) => {
 
 };
 
+// Submits a new tweet to the server then renders the response data received
 const fetchTweetData = (form, renderFunc, bobRoss = false) => {
 
   // Retrieve the tweet data from the form
@@ -160,11 +161,8 @@ const fetchTweetData = (form, renderFunc, bobRoss = false) => {
       data: data
     })
       .then(() => {
-        // Clear the visible input field and hidden form
-        const inputField = $("#tweet-text-input");
-        $("#tweet-text-input").text("");
-        // Update the tweet form counter (reset to empty)
-        updateCounter(inputField); // eslint-disable-line
+        // Clears the form
+        clearForm();
         // Reload all tweets (to update timestamps)
         renderFunc(true);
       })
@@ -173,6 +171,15 @@ const fetchTweetData = (form, renderFunc, bobRoss = false) => {
   }
 
 };
+
+// Clears the new tweet form
+const clearForm = () => {
+  // Clear the visible input field and hidden form
+  const inputField = $("#tweet-text-input");
+  $("#tweet-text-input").text("");
+  // Update the tweet form counter (reset to empty)
+  updateCounter(inputField); // eslint-disable-line
+}
 
 // Submit handler
 const submitTweetHandler = event => {
@@ -208,12 +215,13 @@ const loadTweets = (recentlyTweeted = false) => {
 // Focuses the tweet form input field
 const focusInput = (delay = 500) => {
 
-  return setTimeout(() => {
+  setTimeout(() => {
     $("#tweet-text-input").focus();
   }, delay);
 
 };
 
+// Displays the new tweet form in an animation if show is true, hides it otherwise.
 const showForm = (form, show, speed = 500, delay = 0) => {
 
   setTimeout(() => {
@@ -234,6 +242,7 @@ const showForm = (form, show, speed = 500, delay = 0) => {
           { duration: speed }
         );
       form.slideUp(speed);
+      clearForm();
     }
   }, delay);
 
@@ -241,12 +250,12 @@ const showForm = (form, show, speed = 500, delay = 0) => {
 
 $(document).ready(() => {
 
-  // Load and render existing tweets
-  loadTweets();
-
   const form = $("#new-tweet form");
   const scrollBtn = $("#scroll-btn");
   let composeVisible = true;
+
+  // Load and render existing tweets
+  loadTweets();
 
   // Focus the input field whenever the user clicks anywhere on the form
   form.on("click", () => focusInput());
