@@ -1,0 +1,88 @@
+@import "global";
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  color: $secondary;
+  background-color: $bg-color;
+  font-size: 24px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+main {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+img, button {
+  user-select: none;
+}
+
+#scroll-btn {
+  height: 80px;
+  width: 80px;
+  opacity: 0.5;
+  cursor: pointer;
+  user-select: none;
+  background-color: $primary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  z-index: 9;
+  position: fixed;
+  right: 16px;
+  bottom: 25px;
+  visibility: hidden;
+
+  img {
+    filter: brightness(25%) invert() hue-rotate(63deg);
+    height: 60px;
+    width: 40px;
+    transform: rotate(180deg);
+    margin-bottom: 5px;
+  }
+
+  &:hover {
+    opacity: 0.7;
+
+    img {
+      filter: brightness(0%) invert();
+    }
+
+  }
+
+  &:active {
+    opacity: 0.9;
+
+    img {
+      filter: brightness(0%) invert();
+    }
+
+  }
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+  body > div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  main {
+    margin: 10px 35px;
+  }
+
+}
