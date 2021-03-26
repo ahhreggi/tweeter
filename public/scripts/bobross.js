@@ -518,15 +518,21 @@ const getQuote = (array = true) => {
   return array ? quote.split(" ").map(word => word + " ") : quote;
 };
 
-let bobRossMode = false;
+let bobRossMode = true;
+
 $(document).ready(() => {
 
   const inputField = $("#tweet-text-input");
   const bobRoss = $("#bob-ross");
+  const instructions = $("#profile-header p");
+  const toolTip = $("#profile-header p span");
   let quote = getQuote();
   let charCount = 0;
   let message = "";
   let limitReached = false;
+  let showingInstructions = true;
+
+  toolTip.css("opacity", "1");
 
   const resetBobRoss = () => {
     quote = getQuote();
@@ -534,6 +540,30 @@ $(document).ready(() => {
     message = "";
     limitReached = false;
     console.log("reset!");
+  };
+
+  const toggleInstructions = (show) => {
+
+    if (show) {
+      instructions.slideDown(500);
+      instructions
+        .css("opacity", 0)
+        .animate(
+          { queue: true, opacity: 1 },
+          { duration: 500 }
+        );
+      showingInstructions = true;
+    } else {
+      instructions
+        .css("opacity", 1)
+        .animate(
+          { queue: true, opacity: 0 },
+          { duration: 500 }
+        );
+      instructions.slideUp(500);
+      showingInstructions = false;
+    }
+
   };
 
   // If the user clicks Bob Ross' profile picture, toggle Bob Ross mode
@@ -545,11 +575,15 @@ $(document).ready(() => {
 
     if (bobRossMode) {
       bobRoss.css("filter", "grayscale(100)");
+      toggleInstructions(false);
       bobRossMode = false;
+      $("#new-tweet button").html("Tweet");
     } else {
       bobRoss.css("filter", "grayscale(0)");
+      toggleInstructions(true);
       bobRossMode = true;
       quote = getQuote();
+      $("#new-tweet button").html("Let's get crazy");
     }
 
   });
@@ -596,12 +630,30 @@ $(document).ready(() => {
 
   });
 
+  $("#profile-header p").on("click", () => {
+    toggleInstructions(false);
+    toolTip.css("opacity", "0");
+  });
+
   $("#new-tweet form").on("submit", () => {
 
     if (bobRossMode) {
       resetBobRoss();
     }
 
+  });
+
+  $("#profile-header").on("mouseenter", () => {
+    console.log(showingInstructions);
+    if (showingInstructions) {
+      toolTip.css("opacity", "0.8");
+    }
+  });
+
+  $("#profile-header").on("mouseleave", () => {
+    if (showingInstructions) {
+      toolTip.css("opacity", "0");
+    }
   });
 
 });
