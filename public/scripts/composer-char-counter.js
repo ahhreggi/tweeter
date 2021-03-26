@@ -7,7 +7,7 @@ const escape = function(str) {
 
 };
 
-// Update counter and button style
+// Updates counter and button style
 const updateCounter = (element) => {
 
   const originalMsg = $(element).text();

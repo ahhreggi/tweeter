@@ -175,7 +175,7 @@ const renderTweets = (tweets, recentlyTweeted = false) => {
   for (const tweetData of tweets) {
     const tweetComponent = createTweetElement(tweetData);
 
-    // Animate the new tweet as it appears
+    // Animate the first tweet if a new tweet was recently submitted
     if (recentlyTweeted) {
       const first = tweetComponent.first();
       first.css("display", "none");
