@@ -120,7 +120,7 @@ const renderTweets = (tweets) => {
 
 };
 
-const fetchTweetData = (form, renderFunc) => {
+const fetchTweetData = (form, renderFunc, bobRoss = false) => {
 
   // Retrieve the tweet data from the form
   const tweetMessage = form.val();
@@ -130,12 +130,16 @@ const fetchTweetData = (form, renderFunc) => {
   if (length > 0 && length <= 140) {
 
     // Construct the tweet data object
-    const tweetData = {
-      "user": {
+    let userInfo = {};
+    if (bobRoss) {
+      userInfo = {
         "name": "Bob Ross",
         "avatars": "../images/bobross.png",
         "handle": "@BobRoss"
-      },
+      }
+    }
+    const tweetData = {
+      "user": userInfo,
       "content": {
         "text": tweetMessage
       },
@@ -245,13 +249,13 @@ $(document).ready(() => {
   const scrollBtn = $("#scroll-btn");
   let composeVisible = true;
 
+  // Focus the input field whenever the user clicks anywhere on the form
+  form.on("click", () => focusInput());
+
   // Listen for new tweet form submission then submit and render the tweet data
   form.on("submit", (event) => submitTweetHandler(event));
 
-  // Focus the input field whenever the user clicks anywhere on the form
-  $("#new-tweet").on("click", () => focusInput());
-
-  // Alter styles of elements at different scroll positions
+  // Alter styles of elements at different scroll positions on the page
   $(document).on("scroll", function() {
 
     const position = $(this).scrollTop();
@@ -274,7 +278,7 @@ $(document).ready(() => {
 
   });
 
-  // Toggle the new tweet form's visibility on click
+  // Control the toggling of the form's visibility based on the scroll position
   $(".compose").on("click", function() {
 
     const position = $(document).scrollTop();
