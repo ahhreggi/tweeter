@@ -13,11 +13,9 @@ const convertTimestamp = (timestamp) => {
   } else if (seconds > 30 * 24 * 3600) {
     const months = Math.floor(seconds / (30 * 24 * 3600));
     return `${months} month${months === 1 ? "" : "s"} ago`;
-  } else if (seconds > 2 * 24 * 3600) {
+  } else if (seconds > 24 * 3600) {
     const days = Math.floor(seconds / (24 * 3600));
     return `${days} day${days === 1 ? "" : "s"} ago`;
-  } else if (seconds >= 1 * 24 * 3600) {
-    return `yesterday`;
   } else if (seconds > 3600) {
     const hours = Math.floor(seconds / (3600));
     return `${hours} hour${hours === 1 ? "" : "s"} ago`;
