@@ -100,7 +100,7 @@ const submitTweetHandler = event => {
 };
 
 // Submits a new tweet to the server then renders the response data received
-const fetchTweetData = (form, loaderFunc, bobRoss = false) => {
+const fetchTweetData = (form, loaderFunc, bobRoss = true) => {
 
   // Retrieve the tweet data from the form
   const tweetMessage = form.val();
