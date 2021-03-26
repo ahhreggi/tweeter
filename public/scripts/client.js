@@ -1,4 +1,4 @@
-// Returns a string describing the relative time since the given timestamp (milliseconds).
+// Returns a string describing the relative time since the given timestamp (milliseconds)
 const convertTimestamp = (timestamp) => {
 
   // Retrieve current date in milliseconds and calculate difference
@@ -201,7 +201,7 @@ const renderTweets = (tweets, recentlyTweeted = false) => {
 
 };
 
-// Displays the new tweet form in an animation if show is true, hides it otherwise.
+// Displays the new tweet form in an animation if show is true, hides it otherwise
 const toggleForm = (form, show = true, speed = 400, delay = 0) => {
 
   setTimeout(() => {
