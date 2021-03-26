@@ -1,0 +1,90 @@
+@import "global";
+
+#all-tweets:nth-child(1) {
+  margin-top: 0px;
+}
+
+#all-tweets > span {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: $tertiary-darker;
+  transition: 1s;
+}
+
+.tweet {
+  border: 4px solid $secondary-darker;
+  margin: 25px 5px;
+  padding: 25px;
+}
+
+.tweet:hover {
+  background-color: $tertiary-lighter;
+  box-shadow: 8px 8px $tertiary;
+  color: $secondary-darker;
+}
+
+.tweet header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tweet .author {
+  display: flex;
+  align-items: center;
+}
+
+.tweet .author img {
+  height: 50px;
+  margin-right: 15px;
+}
+
+.tweet .handle {
+  color: $tertiary;
+  visibility: hidden;
+}
+
+.tweet:hover .handle {
+  visibility: visible;
+}
+
+.tweet p {
+  width: 100%;
+  padding: 0px 15px 30px 15px;
+  margin-bottom: 10px;
+  border-bottom: 4px solid $secondary-darker;
+  overflow-wrap: break-word;
+}
+
+.tweet footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0px 15px;
+  user-select: none;
+}
+
+.tweet footer img {
+  height: 18px;
+  width: 18px;
+  margin: 5px;
+  filter: invert() hue-rotate(45deg) saturate(30%) brightness(70%);
+  cursor: pointer;
+  border: 1px;
+  padding: 1px;
+}
+
+.tweet:hover footer img {
+  filter: invert() hue-rotate(45deg) saturate(30%) brightness(50%);
+}
+
+.tweet:hover footer img:hover {
+  filter: invert() hue-rotate(45deg) saturate(100%) brightness(70%);
+}
+
+.tweet:hover footer img:active {
+  padding: 2px;
+}
