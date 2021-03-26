@@ -10,8 +10,6 @@ const escape = function(str) {
 // Update counter and button style
 const updateCounter = (element) => {
 
-  console.log("UPDATING COUNTER!");
-
   const tweetMsg = escape($(element).text());
   const charsLeft = 140 - tweetMsg.length;
   const counter = $(element).parent().find(".counter");
