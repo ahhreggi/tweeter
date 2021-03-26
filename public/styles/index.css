@@ -131,7 +131,7 @@ nav a {
 @media only screen and (min-width: 1200px) {
   #profile-header {
     height: 100vh;
-    width: 60%;
+    width: 35%;
     background-attachment: fixed;
     position: -webkit-sticky;
     position: sticky;
@@ -446,7 +446,8 @@ button {
             flex-direction: row;
   }
   main {
-    margin: 10px 35px;
+    margin: auto;
+    width: 60%;
   }
 }
 /*# sourceMappingURL=index.css.map */
