@@ -12,9 +12,9 @@
 
 ## 📚 Introduction
 
-<b>Tweeter</b> is a simple, single-page Twitter clone that allows users to post tweets as [Bob Ross](https://en.wikipedia.org/wiki/Bob_Ross).
+<b>Tweeter</b> is a simple, single-page Twitter clone that allows users to post tweets... with a twist. As text is entered, the input is <i>automatically replaced</i> by [Bob Ross](https://en.wikipedia.org/wiki/Bob_Ross) quotes. Tweets may consist of multiple quotes, meaning each one is bound to be unique - though this actually works surprisingly well!
 
-Data is exchanged with a server via AJAX requests and rendered live using jQuery.
+Tweet data is exchanged with a server via AJAX requests and rendered live using jQuery.
 
 <b>Built with <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, HTML, CSS, JavaScript, and [jQuery](https://jquery.com/).</b>
 
