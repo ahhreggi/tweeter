@@ -608,7 +608,7 @@ $(document).ready(() => {
         charCount = 0;
         const quoteLength = Array.isArray(quote) ? quote.join(" ").length : quote.length;
         // Prevent a new quote from being added to the message if it would exceed the limit
-        if (message.length + quoteLength >= 140) {
+        if (message.length + quoteLength >= 138) {
           limitReached = true;
         } else {
           message += " ";
