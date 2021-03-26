@@ -184,7 +184,7 @@ const renderTweets = (tweets, recentlyTweeted = false) => {
         first.slideDown(500);
         first.css("display", "block");
         first
-          .css('opacity', 0)
+          .css("opacity", 0)
           .animate({
             queue: true,
             opacity: 1

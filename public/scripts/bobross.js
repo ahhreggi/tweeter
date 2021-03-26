@@ -665,15 +665,19 @@ $(document).ready(() => {
 
   // Show/hide the instructions tooltip on mouse enter/leave
   $("#profile-header").on("mouseenter", () => {
+
     if (showingInstructions) {
       toolTip.css("opacity", "0.8");
     }
+
   });
 
   $("#profile-header").on("mouseleave", () => {
+
     if (showingInstructions) {
       toolTip.css("opacity", "0");
     }
+
   });
 
   // Reset the form whenever toggled
