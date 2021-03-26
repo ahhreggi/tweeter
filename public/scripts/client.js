@@ -134,10 +134,10 @@ const fetchTweetData = (form, loaderFunc, useBobRoss = false) => {
 
     // Submit a post request with the tweet data
     $.ajax({
-        url: "/tweets",
-        method: "POST",
-        data: data
-      })
+      url: "/tweets",
+      method: "POST",
+      data: data
+    })
       .then(() => {
         clearForm();
         // Reload all tweets (to update timestamps)
@@ -154,9 +154,9 @@ const loadTweets = (recentlyTweeted = false) => {
 
   // Retrieve the array of tweets as JSON
   $.ajax({
-      url: "/tweets",
-      method: "GET"
-    })
+    url: "/tweets",
+    method: "GET"
+  })
     .then(tweets => {
       // Sort the data array by timestamp (most recent to oldest)
       const sortedTweets = tweets.sort((tweet1, tweet2) => tweet1.created_at - tweet2.created_at).reverse();
