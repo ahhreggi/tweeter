@@ -16,17 +16,17 @@ html {
 }
 
 body {
+  font-family: $font-main;
+  font-size: 24px;
   color: $secondary;
   background-color: $bg-color;
-  font-size: 24px;
-  font-family: $font-main;
 }
 
 main {
   width: 90%;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  margin: auto;
 }
 
 img,
@@ -35,27 +35,25 @@ button {
 }
 
 #scroll-btn {
+  @include center-all;
   height: 80px;
   width: 80px;
-  opacity: 0.5;
-  cursor: pointer;
-  user-select: none;
   background-color: $primary;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 100%;
-  z-index: 9;
   position: fixed;
+  z-index: 9;
   right: 16px;
   bottom: 25px;
   visibility: hidden;
+  opacity: 0.5;
+  user-select: none;
+  cursor: pointer;
 
   img {
     height: 60px;
     width: 40px;
-    transform: rotate(180deg);
     margin-bottom: 5px;
+    transform: rotate(180deg);
   }
 
   &:hover {

@@ -1,7 +1,7 @@
 nav {
+  color: #ffffff;
   height: 120px;
   width: 100%;
-  color: #ffffff;
   background-color: #4056a1;
   padding: 1.5em;
   display: -webkit-box;
@@ -13,14 +13,14 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 9;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 nav a {
@@ -75,27 +75,27 @@ nav a {
 }
 
 #profile-header {
-  position: relative;
-  height: 400px;
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 36px;
   color: #ffffff;
+  height: 400px;
+  width: 100%;
   background-image: url("../images/painting.jpg");
   background-size: cover;
   background-position: center;
+  position: relative;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -103,8 +103,6 @@ nav a {
 }
 
 #profile-header div {
-  width: 75%;
-  margin-bottom: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -112,19 +110,21 @@ nav a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 75%;
+  margin-bottom: 10px;
 }
 
 #profile-header img {
   width: 200px;
-  border: 2px solid #ffffff;
   margin-top: 25px;
   margin-bottom: 10px;
+  border: 2px solid #ffffff;
   border-radius: 100%;
   -webkit-transition: 0.2s;
   transition: 0.2s;
@@ -145,19 +145,19 @@ nav a {
 #profile-header p {
   font-size: 18px;
   font-weight: 300;
-  text-align: center;
   width: 100%;
+  text-align: center;
   text-shadow: 0px 0px 10px white;
 }
 
 #profile-header p span {
   font-size: 12px;
   font-weight: 300;
+  margin-top: 1rem;
+  display: block;
   -webkit-transition: 1s;
   transition: 1s;
   opacity: 0;
-  display: block;
-  margin-top: 1rem;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -165,17 +165,17 @@ nav a {
     height: 100vh;
     width: 35%;
     background-attachment: fixed;
+    background-position: top;
     position: -webkit-sticky;
     position: sticky;
-    background-position: top;
     top: 0px;
     -webkit-box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.5);
             box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.5);
   }
   #profile-header div {
+    width: inherit;
     position: fixed;
     top: 15rem;
-    width: inherit;
   }
   #profile-header p {
     font-size: 24px;
@@ -190,15 +190,15 @@ nav a {
 #tweet-text-input,
 #tweet-text-input:active,
 #tweet-text-input:focus {
-  background-color: #f4f1ec;
   font-size: 20px;
   color: #414141;
   width: 100%;
   margin: 15px 0px;
   padding-bottom: 10px;
-  outline: none;
   border: none;
   border-bottom: 4px solid #414141;
+  background-color: #f4f1ec;
+  outline: none;
   resize: none;
 }
 
@@ -219,27 +219,27 @@ nav a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #new-tweet button {
-  display: inline-block;
-  background-color: #4056a1;
   font-family: "Bungee", sans-serif;
-  color: #ffffff;
-  outline: none;
-  border: none;
-  padding: 5px 10px;
   font-size: 18px;
+  color: #ffffff;
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  background-color: #4056a1;
+  display: inline-block;
   line-height: 1.3;
-  cursor: pointer;
   -webkit-transition: 0.1s;
   transition: 0.1s;
+  cursor: pointer;
 }
 
 #new-tweet button:active {
@@ -259,16 +259,16 @@ nav a {
 }
 
 #new-tweet .error {
-  color: #f56a6a;
   font-size: 16px;
+  color: #f56a6a;
   margin-left: 5px;
   visibility: hidden;
 }
 
 #new-tweet .counter {
   font-family: "Bungee", sans-serif;
-  color: #414141;
   font-size: 20px;
+  color: #414141;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -280,22 +280,22 @@ nav a {
 }
 
 #all-tweets > span {
+  color: #89919b;
+  margin-bottom: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-bottom: 20px;
-  color: #89919b;
   -webkit-transition: 1s;
   transition: 1s;
 }
 
 .tweet {
-  border: 4px solid #414141;
   margin: 25px 5px;
   padding: 25px;
+  border: 4px solid #414141;
 }
 
 .tweet header {
@@ -331,13 +331,16 @@ nav a {
 
 .tweet p {
   width: 100%;
-  padding: 0px 15px 30px 15px;
   margin-bottom: 10px;
+  padding: 0px 15px 30px 15px;
   border-bottom: 4px solid #414141;
   overflow-wrap: break-word;
 }
 
 .tweet footer {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -348,9 +351,6 @@ nav a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 0px 15px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -361,18 +361,18 @@ nav a {
   height: 18px;
   width: 18px;
   margin: 5px;
+  padding: 1px;
+  border: 1px;
+  cursor: pointer;
   -webkit-filter: saturate(100%) brightness(70%);
           filter: saturate(100%) brightness(70%);
-  cursor: pointer;
-  border: 1px;
-  padding: 1px;
 }
 
 .tweet:hover {
+  color: #414141;
   background-color: #ffffff;
   -webkit-box-shadow: 8px 8px #afbcca;
           box-shadow: 8px 8px #afbcca;
-  color: #414141;
 }
 
 .tweet:hover .handle {
@@ -407,14 +407,15 @@ html {
 }
 
 body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 24px;
   color: #545149;
   background-color: #f4f1ec;
-  font-size: 24px;
-  font-family: "Source Sans Pro", sans-serif;
 }
 
 main {
   width: 90%;
+  margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -422,7 +423,6 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: auto;
 }
 
 img,
@@ -434,38 +434,42 @@ button {
 }
 
 #scroll-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 80px;
   width: 80px;
+  background-color: #4056a1;
+  border-radius: 100%;
+  position: fixed;
+  z-index: 9;
+  right: 16px;
+  bottom: 25px;
+  visibility: hidden;
   opacity: 0.5;
-  cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-color: #4056a1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 100%;
-  z-index: 9;
-  position: fixed;
-  right: 16px;
-  bottom: 25px;
-  visibility: hidden;
+  cursor: pointer;
 }
 
 #scroll-btn img {
   height: 60px;
   width: 40px;
+  margin-bottom: 5px;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
-  margin-bottom: 5px;
 }
 
 #scroll-btn:hover {

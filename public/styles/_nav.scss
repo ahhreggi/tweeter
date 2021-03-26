@@ -1,18 +1,18 @@
 @import "global";
 
 nav {
+  color: $title;
   height: 120px;
   width: 100%;
-  color: $title;
   background-color: $primary;
   padding: 1.5em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  user-select: none;
   position: sticky;
   top: 0;
   z-index: 9;
+  user-select: none;
 
   a {
     color: $title;

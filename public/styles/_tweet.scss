@@ -7,19 +7,19 @@
   }
 
   & > span {
+    color: $tertiary-darker;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
-    color: $tertiary-darker;
     transition: 1s;
   }
 
 }
 
 .tweet {
-  border: 4px solid $secondary-darker;
   margin: 25px 5px;
   padding: 25px;
+  border: 4px solid $secondary-darker;
 
   header {
     display: flex;
@@ -45,37 +45,37 @@
 
   p {
     width: 100%;
-    padding: 0px 15px 30px 15px;
     margin-bottom: 10px;
+    padding: 0px 15px 30px 15px;
     border-bottom: 4px solid $secondary-darker;
     overflow-wrap: break-word;
   }
 
   footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     font-size: 16px;
     font-weight: 600;
     padding: 0px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     user-select: none;
 
     img {
       height: 18px;
       width: 18px;
       margin: 5px;
-      filter: saturate(100%) brightness(70%);
-      cursor: pointer;
-      border: 1px;
       padding: 1px;
+      border: 1px;
+      cursor: pointer;
+      filter: saturate(100%) brightness(70%);
     }
 
   }
 
   &:hover {
+    color: $secondary-darker;
     background-color: $title;
     box-shadow: 8px 8px $tertiary;
-    color: $secondary-darker;
 
     .handle {
       visibility: visible;

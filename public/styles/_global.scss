@@ -14,3 +14,10 @@ $error: #f56a6a;
 $shadow: rgba(0, 0, 0, 0.5);
 
 $header-img: url("../images/painting.jpg");
+
+@mixin center-all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+}
