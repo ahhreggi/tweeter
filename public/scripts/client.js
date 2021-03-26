@@ -1,5 +1,4 @@
 let recentlyTweeted = false;
-let composeVisible = true;
 
 // Returns a string describing the relative time since the given timestamp (milliseconds).
 const convertTimestamp = (timestamp) => {
@@ -204,13 +203,38 @@ const loadTweets = () => {
 };
 
 // Focuses the tweet form input field
-const focusInput = () => {
+const focusInput = (delay = 500) => {
 
   return setTimeout(() => {
     $("#tweet-text-input").focus();
-  }, 500);
+  }, delay);
 
 };
+
+const showForm = (form, show, speed = 500, delay = 0) => {
+
+  setTimeout(() => {
+    if (show) {
+      form.slideDown(speed);
+      form
+        .css('opacity', 0)
+        .animate(
+          { queue: true, opacity: 1 },
+          { duration: speed }
+        );
+      focusInput();
+    } else {
+      form
+      .css('opacity', 1)
+      .animate(
+        { queue: true, opacity: 0 },
+        { duration: speed }
+        );
+        form.slideUp(speed);
+    }
+  }, delay)
+
+}
 
 $(document).ready(() => {
 
@@ -219,75 +243,62 @@ $(document).ready(() => {
 
   const form = $("#new-tweet form");
   const scrollBtn = $("#scroll-btn");
+  let composeVisible = true;
 
-  $(".like").on("click", function() {
-    // $(this).addClass("clicked");
-    alert("clicked!");
-  });
+  // Listen for new tweet form submission then submit and render the tweet data
+  form.on("submit", (event) => submitTweetHandler(event));
 
-  // Listen for new tweet form submission then submit and render tweet data
-  $("#new-tweet form").on("submit", function(event) {
-    submitTweetHandler(event);
-  });
+  // Focus the input field whenever the user clicks anywhere on the form
+  $("#new-tweet").on("click", () => focusInput());
 
-  // Show/hide the corner compose button based on the user's position
+  // Alter styles of elements at different scroll positions
   $(document).on("scroll", function() {
 
-    const pos = $(this).scrollTop();
+    const position = $(this).scrollTop();
     const endMsg = $("#all-tweets > span");
 
-    if (pos <= 350) {
-      scrollBtn.fadeOut(200);
-    } else {
-      scrollBtn.css("visibility", "visible");
-      scrollBtn.fadeIn(200);
-    }
-
-    if (composeVisible) {
-      if (pos <= 350) {
-        form.slideDown();
-      } else if (pos > 600) {
-        form.slideUp(300);
-      }
-    }
-
-    // End of feed message
-    if ($(window).scrollTop() + $(window).height() === $(this).height()) {
+    // Animate the end-of-feed message when the user scrolls to the bottom
+    if (position + $(window).height() + 100 > $(this).height()) {
       endMsg.css("opacity", "1");
-      // scrollBtn.css("opacity", "0.7");
     } else {
       endMsg.css("opacity", "0");
-      // scrollBtn.css("opacity", "0.5");
     }
+
+    // Show the corner compose button when they scroll below a certain position
+    if (position > 250) {
+      scrollBtn.css("visibility", "visible");
+      scrollBtn.fadeIn(200);
+    } else {
+      scrollBtn.fadeOut(200);
+    }
+
   });
 
-  // Toggle the form's visibility based on the user's position on the page
+  // Toggle the new tweet form's visibility on click
   $(".compose").on("click", function() {
 
-    const pos = $(document).scrollTop();
-    const form = $("#new-tweet form");
-    let inputTO;
+    const position = $(document).scrollTop();
 
-    if (pos <= 350) {
+    // Toggle the form if the user is at the top of the page
+    if (position <= 250) {
       if (!composeVisible) {
-        form.slideDown();
+        showForm(form, true, 500);
         composeVisible = true;
-        inputTO = focusInput();
       } else if (composeVisible) {
-        clearTimeout(inputTO);
-        form.slideUp();
+        showForm(form, false);
         composeVisible = false;
       }
-    } else if (pos > 350) {
+    // Show the form regardless of current state if the user is lower on the page
+    } else if (position > 250) {
       $(document).scrollTop(0);
-      composeVisible = true;
-      inputTO = focusInput();
+      if (!composeVisible) {
+        showForm(form, true, 500, 500);
+        composeVisible = true;
+      } else {
+        focusInput();
+      }
     }
 
-  });
-
-  $("#new-tweet").on("click", function() {
-    $("#tweet-text-input").focus();
   });
 
 });
