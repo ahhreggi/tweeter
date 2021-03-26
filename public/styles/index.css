@@ -140,7 +140,6 @@ nav a {
 
 #profile-header img:active {
   border-color: rgba(255, 255, 255, 0.5);
-  opacity: 0.95;
 }
 
 #profile-header p {

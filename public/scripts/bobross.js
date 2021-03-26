@@ -514,8 +514,10 @@ const quotes = [
 
 // Returns a random Bob Ross quote
 const getQuote = (array = true) => {
+
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
   return array ? quote.split(" ").map(word => word + " ") : quote;
+
 };
 
 let bobRossMode = true;
@@ -526,6 +528,7 @@ $(document).ready(() => {
   const bobRoss = $("#bob-ross");
   const instructions = $("#profile-header p");
   const toolTip = $("#profile-header p span");
+
   let quote = getQuote();
   let charCount = 0;
   let message = "";
@@ -534,14 +537,17 @@ $(document).ready(() => {
 
   toolTip.css("opacity", "1");
 
+  // Resets the current message
   const resetBobRoss = () => {
+
     quote = getQuote();
     charCount = 0;
     message = "";
     limitReached = false;
-    console.log("reset!");
+
   };
 
+  // Shows or hides the instructions
   const toggleInstructions = (show) => {
 
     if (show) {
@@ -584,24 +590,28 @@ $(document).ready(() => {
       bobRossMode = true;
       quote = getQuote();
       $("#new-tweet button").html("Let's get crazy");
+      toolTip.css("opacity", "1");
     }
 
   });
 
-  // If bobRossMode is enabled, type out a Bob Ross quote as the user types
+  // If bobRossMode is enabled, replace the user's input with Bob Ross quotes
   inputField.on("input", function() {
 
     if (bobRossMode) {
+      // Dynamically generate new quotes with the message length
       if (charCount > quote.length - 1) {
         quote = getQuote();
         charCount = 0;
         const quoteLength = Array.isArray(quote) ? quote.join(" ").length : quote.length;
+        // Prevent a new quote from being added to the message if it would exceed the limit
         if (message.length + quoteLength >= 140) {
           limitReached = true;
         } else {
           message += " ";
         }
       }
+      // Add to the message until the limit is reached, otherwise, stop further input
       if (!limitReached) {
         if (quote[charCount] !== undefined) {
           message += quote[charCount];
@@ -611,7 +621,7 @@ $(document).ready(() => {
       } else {
         inputField.html(message);
       }
-      // Move cursor to end
+      // Move cursor to the end
       inputField.focus();
       document.execCommand("selectAll", false, null);
       document.getSelection().collapseToEnd();
@@ -619,6 +629,7 @@ $(document).ready(() => {
 
   });
 
+  // Reset the message when the user presses ESC
   $(document).on('keydown', function(event) {
 
     if (bobRossMode) {
@@ -630,11 +641,17 @@ $(document).ready(() => {
 
   });
 
+  // Hide the instructions when the user clicks on them
   $("#profile-header p").on("click", () => {
-    toggleInstructions(false);
-    toolTip.css("opacity", "0");
+
+    if (showingInstructions) {
+      toggleInstructions(false);
+      toolTip.css("opacity", "0");
+    }
+
   });
 
+  // Reset the quote when a tweet is submitted
   $("#new-tweet form").on("submit", () => {
 
     if (bobRossMode) {
@@ -643,8 +660,8 @@ $(document).ready(() => {
 
   });
 
+  // Show/hide the instructions tooltip on mouse enter/leave
   $("#profile-header").on("mouseenter", () => {
-    console.log(showingInstructions);
     if (showingInstructions) {
       toolTip.css("opacity", "0.8");
     }
