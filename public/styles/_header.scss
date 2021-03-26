@@ -15,7 +15,7 @@
   background-position: center;
 
   div {
-    width: 30%;
+    width: 75%;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
@@ -26,15 +26,30 @@
   img {
     width: 200px;
     border: 2px solid $title;
+    margin-bottom: 10px;
     border-radius: 100%;
+    transition: 0.2s;
     filter: grayscale(100);
 
     &:hover {
-      width: 201px;
-      box-shadow: 5px 5px 10px $shadow;
+      // width: 201px;
+      box-shadow: 0px 0px 10px $shadow;
       cursor: pointer;
+      filter: none;
     }
 
+    &:active {
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 300;
+    text-align: center;
+    width: 100%;
+    text-shadow: 0px 0px 10px rgb(255, 255, 255);
   }
 
 }
@@ -52,7 +67,13 @@
 
     div {
       position: fixed;
-      top: 25vh
+      top: 15rem;
+    }
+
+    p {
+      font-size: 24px;
+      width: 30%;
+      margin-top: 2rem;
     }
 
   }
