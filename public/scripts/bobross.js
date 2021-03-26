@@ -677,4 +677,13 @@ $(document).ready(() => {
     }
   });
 
+  // Reset the form whenever toggled
+  $(".compose").on("click", function() {
+
+    if (bobRossMode) {
+      resetBobRoss();
+    }
+
+  });
+
 });
