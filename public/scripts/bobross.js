@@ -473,7 +473,7 @@ const quotes = [
   "You can do it!",
   "You can end up with great big cotton balls in the sky if you're not careful.",
   "You can just go on and on and on.",
-  "You could sit there with your one-haired brush for a week trying to do that, or you can do it in one stroke with an almighty brush!",
+  "You could sit there with your one-haired brush for a week trying to do that.",
   "You decide -- you have to make these big decisions.",
   "You decide where all these things are.",
   "You didn't know you had so much power, did you?",
@@ -580,7 +580,7 @@ $(document).ready(() => {
     clearForm(); // eslint-disable-line
 
     if (bobRossMode) {
-      bobRoss.css("filter", "grayscale(100)");
+      bobRoss.css("filter", "grayscale(50%)");
       toggleInstructions(false);
       bobRossMode = false;
       $("#new-tweet button").html("Tweet");
