@@ -96,7 +96,7 @@ const quotes = [
   "Everybody needs to sing in the sunshine!",
   "Everybody should have a friend.",
   "Everybody should paint what they see and what they feel.",
-  "Everybody will see nature through different eyes",
+  "Everybody will see nature through different eyes.",
   "Everything should get lighter toward the horizon.",
   "Feel the power of the water.",
   "Find out which one works best for you, and that's the one that you want to use.",
