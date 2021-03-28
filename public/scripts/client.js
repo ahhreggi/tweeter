@@ -34,19 +34,19 @@ const convertTimestamp = (timestamp) => {
 const createTweetElement = (tweetData) => {
 
   // Create the main tweet container
-  const $tweet = $(`<article class="tweet">`);
+  const $tweet = $("<article class=\"tweet\">");
 
   // Create the header
   const $header = $("<header>");
 
   // Create the header author
-  const $author = $(`<span class="author">`);
+  const $author = $("<span class=\"author\">");
   const $avatar = $(`<img src="${tweetData.user.avatars}" alt="profile picture" draggable="false" />`);
   $author.append($avatar);
   $author.append(tweetData.user.name);
 
   // Create the header handle
-  const $handle = $(`<span class="handle">`);
+  const $handle = $("<span class=\"handle\">");
   $handle.append(tweetData.user.handle);
 
   // Add the header elements to the header

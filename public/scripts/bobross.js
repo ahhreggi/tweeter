@@ -513,11 +513,29 @@ const quotes = [
 ];
 
 // Returns a random Bob Ross quote
-const getQuote = (array = true) => {
+const getOneQuote = (array = true) => {
 
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
   return array ? quote.split(" ").map(word => word + " ") : quote;
 
+};
+
+// Returns a message consisting of 1+ quotes
+const getQuote = () => {
+  let message = [];
+  let quote = getOneQuote();
+  while (message.concat(quote).join(" ").length < 140) {
+    message = message.concat(quote);
+    quote = getOneQuote();
+  }
+  return message;
+};
+
+// Move cursor to the end of the input field
+const focusEndInput = () => {
+  $("#tweet-text-input").focus();
+  document.execCommand("selectAll", false, null);
+  document.getSelection().collapseToEnd();
 };
 
 let bobRossMode = true;
@@ -530,9 +548,8 @@ $(document).ready(() => {
   const toolTip = $("#profile-header p span");
 
   let quote = getQuote();
-  let charCount = 0;
-  let message = "";
-  let limitReached = false;
+  let quoteIndex = 0;
+  let message = [];
   let showingInstructions = true;
 
   toolTip.css("opacity", "1");
@@ -541,9 +558,9 @@ $(document).ready(() => {
   const resetBobRoss = () => {
 
     quote = getQuote();
-    charCount = 0;
-    message = "";
-    limitReached = false;
+    quoteIndex = 0;
+    message = [];
+    clearForm(); // eslint-disable-line
 
   };
 
@@ -580,7 +597,6 @@ $(document).ready(() => {
   bobRoss.on("click", function() {
 
     resetBobRoss();
-    clearForm(); // eslint-disable-line
 
     if (bobRossMode) {
       bobRoss.css("filter", "grayscale(50%)");
@@ -599,47 +615,57 @@ $(document).ready(() => {
   });
 
   // If bobRossMode is enabled, replace the user's input with Bob Ross quotes
-  inputField.on("input", function() {
+  inputField.on("input", function(event) {
+
+    const inputType = event.originalEvent.inputType;
 
     if (bobRossMode) {
-      // Dynamically generate new quotes with the message length
-      if (charCount > quote.length - 1) {
-        quote = getQuote();
-        charCount = 0;
-        const quoteLength = Array.isArray(quote) ? quote.join(" ").length : quote.length;
-        // Prevent a new quote from being added to the message if it would exceed the limit
-        if (message.length + quoteLength >= 138) {
-          limitReached = true;
-        } else {
-          message += " ";
+
+      // If the user presses BACKSPACE, remove one word from the message
+      if (inputType === "deleteContentBackward") {
+
+        if (quoteIndex > 0) {
+          quoteIndex -= 1;
         }
-      }
-      // Add to the message until the limit is reached, otherwise, stop further input
-      if (!limitReached) {
-        if (quote[charCount] !== undefined) {
-          message += quote[charCount];
-          inputField.html(message);
+        message.pop();
+        inputField.html(message.join(" "));
+
+        // If the user removes the entire message, get a new quote
+        const messageLength = message.join(" ").length;
+        if (messageLength === 0) {
+          resetBobRoss();
         }
-        charCount++;
+
+        // Add to the message until the limit is reached, otherwise, stop further input
       } else {
-        inputField.html(message);
+
+        if (quoteIndex < quote.length) {
+          if (quote[quoteIndex] !== undefined) {
+            message.push(quote[quoteIndex]);
+            inputField.html(message.join(" "));
+          }
+          quoteIndex++;
+        } else {
+          inputField.html(message.join(" "));
+        }
+
       }
+
       // Move cursor to the end
-      inputField.focus();
-      document.execCommand("selectAll", false, null);
-      document.getSelection().collapseToEnd();
+      focusEndInput();
+
     }
 
   });
 
   // Reset the message when the user presses ESC
-  $(document).on('keydown', function(event) {
+  $(document).on("keydown", function(event) {
 
     if (bobRossMode) {
       if (event.key === "Escape") {
         resetBobRoss();
-        clearForm(); // eslint-disable-line
       }
+
     }
 
   });
