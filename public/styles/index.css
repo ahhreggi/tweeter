@@ -298,6 +298,20 @@ nav a {
   border: 4px solid #414141;
 }
 
+.tweet a {
+  font-weight: 600;
+  color: #4056a1;
+  text-decoration: none;
+}
+
+.tweet a:hover {
+  color: #506bc7;
+}
+
+.tweet a:active {
+  color: #374a8b;
+}
+
 .tweet header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -322,6 +336,11 @@ nav a {
 .tweet .author img {
   height: 50px;
   margin-right: 15px;
+}
+
+.tweet .author img:nth-child(2) {
+  height: 20px;
+  margin-left: 5px;
 }
 
 .tweet .handle {

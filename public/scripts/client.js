@@ -204,7 +204,7 @@ const animateTweet = (tweet) => {
         duration: 500
       });
   }, 200);
-}
+};
 
 // Displays the new tweet form in an animation if show is true, hides it otherwise
 const toggleForm = (form, show = true, speed = 400, delay = 0) => {
@@ -258,14 +258,14 @@ const focusInput = (delay = 500) => {
 // Submits a client-sided welcome tweet
 const submitWelcomeTweet = () => {
 
-  const tweetMessage = `Welcome to Tweeter! Check out this project on GitHub <a href="https://github.com/ahhreggi/tweeter" target="_blank">here</a>.`;
+  const tweetMessage = "Welcome to Tweeter! Check out this project on GitHub <a href=\"https://github.com/ahhreggi/tweeter\" target=\"_blank\">here</a>.";
 
   // Construct the tweet data object
   let userInfo = {
-    "name": "Reggi Sirilan",
+    "name": "Reggi Sirilan <img src=\"/images/icons/verified.png\" alt=\"verified\" />",
     "avatars": "https://i.imgur.com/ieUfSz8.png",
     "handle": "@ahhreggi"
-  }
+  };
   const tweetData = {
     "user": userInfo,
     "content": {
@@ -324,7 +324,7 @@ $(document).ready(() => {
       submitWelcomeTweet();
       shownWelcomeMsg = true;
     }
-  })
+  });
 
   // Listen for new tweet form submission then submit and render the tweet data
   form.on("submit", (event) => submitTweetHandler(event, bobRossMode)); // eslint-disable-line
