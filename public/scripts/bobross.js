@@ -601,6 +601,7 @@ $(document).ready(() => {
   bobRoss.on("click", function() {
 
     resetBobRoss();
+    clearForm(); // eslint-disable-line
 
     if (bobRossMode) {
       bobRoss.css("filter", "grayscale(50%)");
