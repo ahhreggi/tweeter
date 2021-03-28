@@ -560,7 +560,7 @@ $(document).ready(() => {
   toolTip.css("opacity", "1");
 
   // Resets the current message
-  const resetBobRoss = (clear=false) => {
+  const resetBobRoss = (clear = false) => {
 
     quote = getQuote();
     quoteIndex = 0;
