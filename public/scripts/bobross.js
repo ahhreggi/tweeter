@@ -513,48 +513,45 @@ const quotes = [
 ];
 
 // Returns a random Bob Ross quote
-const getOneQuote = () => {
+const getOneQuote = (maxLength = null, options = quotes) => {
 
-  return quotes[Math.floor(Math.random() * quotes.length)];
+  let quoteList = options.slice();
+  if (maxLength) {
+    quoteList = quoteList.filter(quote => quote.length <= maxLength);
+  }
+
+  return quoteList[Math.floor(Math.random() * quoteList.length)];
 
 };
 
 // Returns an array consisting of words from of 1+ unique Bob Ross quotes
-const getQuote = (maxLength = 125) => {
+const getQuote = (minLength = 70, maxLength = 125) => {
 
-  // Get the initial quote
-  const quotes = [getOneQuote()];
+  // Set the initial quote
+  const generatedQuotes = [getOneQuote()];
 
-  // Attempt to add more quotes while the message is below the max length
-  let attempts = 3;
-  while (quotes.join(" ").length < maxLength && attempts) {
-
-    // If the new quote would cause the message to exceed the max length, attempt to find a shorter quote
-    let tries = 3;
-    let nextQuote = getOneQuote();
-    while (quotes.concat(nextQuote).join(" ").length > maxLength && tries) {
-      nextQuote = getOneQuote();
-      tries--;
+  while (generatedQuotes.join(" ").length < minLength) {
+    const filteredQuotes = quotes.filter((quote) => !generatedQuotes.includes(quote));
+    const maxQLen = maxLength - generatedQuotes.join(" ").length;
+    const nextQuote = getOneQuote(maxQLen, filteredQuotes);
+    if (nextQuote) {
+      generatedQuotes.push(nextQuote);
+    } else {
+      break;
     }
-
-    // Check that the new quote is unique and results in a message within the length limit
-    if (quotes.concat(nextQuote).join(" ").length < maxLength && !quotes.includes(nextQuote)) {
-      quotes.push(nextQuote);
-    }
-
-    attempts--;
-
   }
 
-  return quotes.join(" ").split(" ");
+  return generatedQuotes.join(" ").split(" ");
 
 };
 
 // Move cursor to the end of the input field
 const focusEndInput = () => {
+
   $("#tweet-text-input").focus();
   document.execCommand("selectAll", false, null);
   document.getSelection().collapseToEnd();
+
 };
 
 let bobRossMode = true;
@@ -654,7 +651,7 @@ $(document).ready(function() {
 
         // If the user removes the entire message, get a new quote
         const messageLength = message.join(" ").length;
-        if (messageLength === 0) {
+        if (!messageLength) {
           resetBobRoss(true);
         }
 
@@ -687,7 +684,6 @@ $(document).ready(function() {
       if (event.key === "Escape") {
         resetBobRoss(true);
       }
-
     }
 
   });

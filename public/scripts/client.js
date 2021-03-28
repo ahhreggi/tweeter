@@ -135,10 +135,10 @@ const fetchTweetData = (form, loaderFunc, useBobRoss = false, hideVerifiedTweets
 
     // Submit a post request with the tweet data
     $.ajax({
-        url: "/tweets",
-        method: "POST",
-        data: data
-      })
+      url: "/tweets",
+      method: "POST",
+      data: data
+    })
       .then(() => {
         clearForm();
         // Reload all tweets (to update timestamps)
@@ -160,9 +160,9 @@ const loadTweets = (recentlyTweeted = false, hideVerifiedTweets = false) => {
 
   // Retrieve the array of tweets as JSON
   $.ajax({
-      url: "/tweets",
-      method: "GET"
-    })
+    url: "/tweets",
+    method: "GET"
+  })
     .then(tweets => {
       // Hide verified tweets
       if (hideVerifiedTweets) {
@@ -269,11 +269,13 @@ const toggleForm = (form, show = true, duration = 400, delay = 0) => {
 
 // Clears the new tweet form
 const clearForm = () => {
+
   // Clear the visible input field and hidden form
   const inputField = $("#tweet-text-input");
   $("#tweet-text-input").text("");
   // Update the tweet form counter (reset to empty)
   updateCounter(inputField); // eslint-disable-line
+
 };
 
 // Focuses the tweet form input field
