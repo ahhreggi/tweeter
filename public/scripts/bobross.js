@@ -625,7 +625,7 @@ $(document).ready(() => {
 
     if (bobRossMode) {
 
-      // If the user presses BACKSPACE, remove one word from the message
+      // If the user tries to delete a word (e.g., BACKSPACE), remove one word from the message
       if (inputType === "deleteContentBackward") {
 
         if (quoteIndex > 0) {
