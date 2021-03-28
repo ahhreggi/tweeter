@@ -512,6 +512,8 @@ const quotes = [
   "Zooooom... you've gotta make the little noises or it doesn't work right."
 ];
 
+const emojiList = ["🎨", "💚", "🤟", "✌️", "👌", "🙏", "👊", "👍", "😉", "😀", "😲", "😭", "🤔", "🤣", "😂", "😆", "🤪", "🤗", "😌", "😌", "🤭", "🤯", "💯", "🔥"];
+
 // Returns a random Bob Ross quote
 const getOneQuote = (maxLength = null, options = quotes) => {
 
@@ -525,7 +527,7 @@ const getOneQuote = (maxLength = null, options = quotes) => {
 };
 
 // Returns an array consisting of words from of 1+ unique Bob Ross quotes
-const getQuote = (minLength = 70, maxLength = 125) => {
+const getQuote = (minLength = 70, maxLength = 125, addEmoji = true) => {
 
   // Set the initial quote
   const generatedQuotes = [getOneQuote()];
@@ -539,6 +541,11 @@ const getQuote = (minLength = 70, maxLength = 125) => {
     } else {
       break;
     }
+  }
+
+  if (addEmoji) {
+    const emoji = emojiList[Math.floor(Math.random() * emojiList.length)];
+    generatedQuotes.push(emoji);
   }
 
   return generatedQuotes.join(" ").split(" ");
