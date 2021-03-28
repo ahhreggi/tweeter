@@ -519,18 +519,18 @@ const getOneQuote = () => {
 
 };
 
-// Returns an array consisting of words from of 1+ unique quotes
-const getQuote = (maxLength = 138) => {
+// Returns an array consisting of words from of 1+ unique Bob Ross quotes
+const getQuote = (maxLength = 125) => {
 
   // Get the initial quote
   const quotes = [getOneQuote()];
 
-  // Attempt to add more quotes while the message is below the max length (limit: 10)
-  let attempts = 10;
+  // Attempt to add more quotes while the message is below the max length
+  let attempts = 3;
   while (quotes.join(" ").length < maxLength && attempts) {
 
-    // If the new quote would cause the message to exceed the max length, attempt to find a shorter quote (limit: 10)
-    let tries = 10;
+    // If the new quote would cause the message to exceed the max length, attempt to find a shorter quote
+    let tries = 3;
     let nextQuote = getOneQuote();
     while (quotes.concat(nextQuote).join(" ").length > maxLength && tries) {
       nextQuote = getOneQuote();

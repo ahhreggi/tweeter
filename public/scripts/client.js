@@ -368,6 +368,7 @@ $(document).ready(() => {
 
     submitTweetHandler(event, bobRossMode, verifiedTweets); // eslint-disable-line
     verifiedTweets = false;
+    focusInput();
 
   });
 
