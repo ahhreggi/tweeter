@@ -525,7 +525,7 @@ const getQuote = () => {
   let message = [];
   let quote = getOneQuote();
   let quoteLog = [quote];
-  while (message.concat(quote).join(" ").length < 140) {
+  while (message.concat(quote).join(" ").length < 138) {
     message = message.concat(quote);
     quote = getOneQuote();
     while (quoteLog.includes(quote)) {
