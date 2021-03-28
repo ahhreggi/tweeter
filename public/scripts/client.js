@@ -237,18 +237,18 @@ const animateTweet = (tweet, hide = false, delay = 200) => {
 };
 
 // Displays the new tweet form in an animation if show is true, hides it otherwise
-const toggleForm = (form, show = true, speed = 400, delay = 0) => {
+const toggleForm = (form, show = true, duration = 400, delay = 0) => {
 
   setTimeout(() => {
     if (show) {
-      form.slideDown(speed);
+      form.slideDown(duration);
       form
         .css("opacity", 0)
         .animate({
           queue: true,
           opacity: 1
         }, {
-          duration: speed
+          duration: duration
         });
       focusInput();
     } else {
@@ -258,9 +258,9 @@ const toggleForm = (form, show = true, speed = 400, delay = 0) => {
           queue: true,
           opacity: 0
         }, {
-          duration: speed
+          duration: duration
         });
-      form.slideUp(speed);
+      form.slideUp(duration);
       clearForm();
     }
   }, delay);
@@ -419,6 +419,17 @@ $(document).ready(() => {
         focusInput();
       }
     }
+
+  });
+
+  // Show and focus the form if the user enables Bob Ross mode
+  $("#bob-ross").on("click", function() {
+
+    if (bobRossMode && !composeVisible) { // eslint-disable-line
+      toggleForm(form, true);
+      composeVisible = true;
+    }
+    focusInput();
 
   });
 

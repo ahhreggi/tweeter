@@ -658,7 +658,7 @@ $(document).ready(() => {
           resetBobRoss(true);
         }
 
-        // Add to the message until the limit is reached, otherwise, stop further input
+        // Add to the message until the end of the quote is reached, then stop further input
       } else {
 
         if (quoteIndex < quote.length) {
