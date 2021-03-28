@@ -177,21 +177,9 @@ const renderTweets = (tweets, recentlyTweeted = false) => {
 
     // Animate the first tweet if a new tweet was recently submitted
     if (recentlyTweeted) {
-      const first = tweetComponent.first();
-      first.css("display", "none");
       recentlyTweeted = false;
-      setTimeout(() => {
-        first.slideDown(500);
-        first.css("display", "block");
-        first
-          .css("opacity", 0)
-          .animate({
-            queue: true,
-            opacity: 1
-          }, {
-            duration: 500
-          });
-      }, 200);
+      const first = tweetComponent.first();
+      animateTweet(first);
     }
     container.append(tweetComponent);
   }
@@ -200,6 +188,23 @@ const renderTweets = (tweets, recentlyTweeted = false) => {
   container.append(feedEnd);
 
 };
+
+// Animate the addition of a tweet
+const animateTweet = (tweet) => {
+  tweet.css("display", "none");
+  setTimeout(() => {
+    tweet.slideDown(500);
+    tweet.css("display", "block");
+    tweet
+      .css("opacity", 0)
+      .animate({
+        queue: true,
+        opacity: 1
+      }, {
+        duration: 500
+      });
+  }, 200);
+}
 
 // Displays the new tweet form in an animation if show is true, hides it otherwise
 const toggleForm = (form, show = true, speed = 400, delay = 0) => {
@@ -250,11 +255,38 @@ const focusInput = (delay = 500) => {
 
 };
 
+// Submit a random tweet
+const submitWelcomeTweet = () => {
+
+  const tweetMessage = `Welcome to Tweeter! Check out this project on GitHub <a href="https://github.com/ahhreggi/tweeter" target="_blank">here</a>.`;
+
+  // Construct the tweet data object
+  let userInfo = {
+    "name": "Reggi Sirilan",
+    "avatars": "https://i.imgur.com/ieUfSz8.png",
+    "handle": "@ahhreggi"
+  }
+  const tweetData = {
+    "user": userInfo,
+    "content": {
+      "text": tweetMessage
+    },
+    "created_at": new Date().getTime()
+  };
+
+  const container = $("#all-tweets");
+  const welcomeTweet = createTweetElement(tweetData);
+  container.prepend(welcomeTweet);
+  animateTweet(welcomeTweet);
+
+};
+
 $(document).ready(() => {
 
   const form = $("#new-tweet form");
   const scrollBtn = $("#scroll-btn");
   let composeVisible = true;
+  let shownWelcomeMsg = false;
 
   form.css("opacity", 0);
   form.css("display", "none");
@@ -283,7 +315,16 @@ $(document).ready(() => {
 
 
   // Focus the input field whenever the user clicks anywhere on the form
-  form.on("click", () => focusInput(0));
+  form.on("click", () => {
+    focusInput(0);
+  });
+
+  form.on("input", () => {
+    if (!shownWelcomeMsg) {
+      submitWelcomeTweet();
+      shownWelcomeMsg = true;
+    }
+  })
 
   // Listen for new tweet form submission then submit and render the tweet data
   form.on("submit", (event) => submitTweetHandler(event, bobRossMode)); // eslint-disable-line
