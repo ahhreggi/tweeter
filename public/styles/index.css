@@ -413,6 +413,14 @@ nav {
   padding: 2px;
 }
 
+.verified {
+  border-color: #374a8b;
+}
+
+.verified:hover {
+  background-color: #f9fcff;
+}
+
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

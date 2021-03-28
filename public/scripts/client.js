@@ -31,10 +31,10 @@ const convertTimestamp = (timestamp) => {
 };
 
 // Returns a single tweet component constructed using the given tweet data
-const createTweetElement = (tweetData) => {
+const createTweetElement = (tweetData, verified = false) => {
 
   // Create the main tweet container
-  const $tweet = $("<article class=\"tweet\">");
+  const $tweet = $(`<article class="tweet${verified ? " verified" : ""}">`);
 
   // Create the header
   const $header = $("<header>");
@@ -255,10 +255,8 @@ const focusInput = (delay = 500) => {
 
 };
 
-// Submits a client-sided welcome tweet
-const submitWelcomeTweet = () => {
-
-  const tweetMessage = "Welcome to Tweeter! Check out this project on GitHub <a href=\"https://github.com/ahhreggi/tweeter\" target=\"_blank\">here</a>.";
+// Submits a client-sided tweet as Reggi Sirilan
+const submitReggiTweet = (tweetMessage) => {
 
   // Construct the tweet data object
   let userInfo = {
@@ -274,8 +272,9 @@ const submitWelcomeTweet = () => {
     "created_at": new Date().getTime()
   };
 
+  // Render the tweet
   const container = $("#all-tweets");
-  const welcomeTweet = createTweetElement(tweetData);
+  const welcomeTweet = createTweetElement(tweetData, true);
   container.prepend(welcomeTweet);
   animateTweet(welcomeTweet);
 
@@ -287,6 +286,7 @@ $(document).ready(() => {
   const scrollBtn = $("#scroll-btn");
   let composeVisible = true;
   let shownWelcomeMsg = false;
+  let onCooldown = false;
 
   form.css("opacity", 0);
   form.css("display", "none");
@@ -313,21 +313,46 @@ $(document).ready(() => {
     toggleForm(form, true, 800, 500);
   }, 100);
 
-
   // Focus the input field whenever the user clicks anywhere on the form
   form.on("click", () => {
     focusInput(0);
   });
 
+  // Display a client-sided welcome tweet when the user clicks the nav logo
+  $("#logo").on("click", () => {
+
+    if (!onCooldown) {
+      onCooldown = true;
+      setTimeout(() => {
+        const msg = "Welcome to Tweeter! I hope you have as much fun with this as I did while making it! ✌️<br><br>If you'd like to see the project on GitHub, you can do so <a href=\"https://github.com/ahhreggi/tweeter\" target=\"_blank\">here</a>.";
+        submitReggiTweet(msg);
+      }, 300);
+      setTimeout(() => {
+        onCooldown = false;
+      }, 1000);
+    }
+
+    shownWelcomeMsg = true;
+
+  });
+
+  // Display a client-sided welcome tweet when the user first starts typing
   form.on("input", () => {
+
     if (!shownWelcomeMsg) {
-      submitWelcomeTweet();
+      const msg = "Welcome to Tweeter! I hope you have as much fun with this as I did while making it! ✌️<br><br>If you'd like to see the project on GitHub, you can do so <a href=\"https://github.com/ahhreggi/tweeter\" target=\"_blank\">here</a>.";
+      submitReggiTweet(msg);
       shownWelcomeMsg = true;
     }
+
   });
 
   // Listen for new tweet form submission then submit and render the tweet data
-  form.on("submit", (event) => submitTweetHandler(event, bobRossMode)); // eslint-disable-line
+  form.on("submit", (event) => {
+
+    submitTweetHandler(event, bobRossMode); // eslint-disable-line
+
+  });
 
   // Alter styles of elements at different scroll positions on the page
   $(document).on("scroll", function() {
