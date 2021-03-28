@@ -13,17 +13,17 @@ nav {
   top: 0;
   z-index: 9;
   user-select: none;
-
-  a {
-    color: $title;
-    text-decoration: none;
-  }
-
 }
 
 #logo {
   font-family: $font-logo;
   font-size: 42px;
+  cursor: pointer;
+
+  &:hover {
+    animation: bounce 0.5s infinite alternate;
+  }
+
 }
 
 #compose-btn {
