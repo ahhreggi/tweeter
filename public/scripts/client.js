@@ -87,19 +87,20 @@ const createTweetElement = (tweetData, verified = false) => {
 
 };
 
-// Submit handler
-const submitTweetHandler = (event, useBobRoss = true) => {
+// Processes the submission of a new tweet
+const submitTweetHandler = (event, useBobRoss = true, hideVerifiedTweets = false) => {
+
   // Prevent the default form submission behavior
   event.preventDefault();
   // Retrieve the hidden form component
   const form = $("#tweet-text");
   // Submit an ajax request using the form data
-  fetchTweetData(form, loadTweets, useBobRoss);
+  fetchTweetData(form, loadTweets, useBobRoss, hideVerifiedTweets);
 
 };
 
 // Submits a new tweet to the server then renders the response data received
-const fetchTweetData = (form, loaderFunc, useBobRoss = false) => {
+const fetchTweetData = (form, loaderFunc, useBobRoss = false, hideVerifiedTweets = false) => {
 
   // Retrieve the tweet data from the form
   const tweetMessage = form.val();
@@ -141,7 +142,7 @@ const fetchTweetData = (form, loaderFunc, useBobRoss = false) => {
       .then(() => {
         clearForm();
         // Reload all tweets (to update timestamps)
-        loaderFunc(true);
+        loaderFunc(true, hideVerifiedTweets);
       })
       .catch(err => console.log(err));
 
@@ -150,7 +151,12 @@ const fetchTweetData = (form, loaderFunc, useBobRoss = false) => {
 };
 
 // Loads existing tweets and renders them onto the page
-const loadTweets = (recentlyTweeted = false) => {
+const loadTweets = (recentlyTweeted = false, hideVerifiedTweets = false) => {
+
+  let delay = 0;
+  if (hideVerifiedTweets) {
+    delay = 1000;
+  }
 
   // Retrieve the array of tweets as JSON
   $.ajax({
@@ -158,17 +164,23 @@ const loadTweets = (recentlyTweeted = false) => {
     method: "GET"
   })
     .then(tweets => {
+      // Hide verified tweets
+      if (hideVerifiedTweets) {
+        animateTweet($(".verified"), true, 0);
+      }
       // Sort the data array by timestamp (most recent to oldest)
       const sortedTweets = tweets.sort((tweet1, tweet2) => tweet1.created_at - tweet2.created_at).reverse();
-      // Clear the page of existing elements
-      $("#all-tweets").empty();
-      // Render the sorted tweets
-      renderTweets(sortedTweets, recentlyTweeted);
+      setTimeout(() => {
+        // Clear the page of existing elements
+        $("#all-tweets").empty();
+        // Render the sorted tweets
+        renderTweets(sortedTweets, recentlyTweeted);
+      }, delay);
     });
 
 };
 
-// Construct tweets in the given tweets array and append them to the tweets container
+// Constructs tweets in the given tweets array and append them to the tweets container
 const renderTweets = (tweets, recentlyTweeted = false) => {
 
   const container = $("#all-tweets");
@@ -189,21 +201,39 @@ const renderTweets = (tweets, recentlyTweeted = false) => {
 
 };
 
-// Animate the addition of a tweet
-const animateTweet = (tweet) => {
-  tweet.css("display", "none");
-  setTimeout(() => {
-    tweet.slideDown(500);
-    tweet.css("display", "block");
-    tweet
-      .css("opacity", 0)
-      .animate({
-        queue: true,
-        opacity: 1
-      }, {
-        duration: 500
-      });
-  }, 200);
+// Animates the addition or removal of a tweet
+const animateTweet = (tweet, hide = false, delay = 200) => {
+
+  if (!hide) {
+    tweet.css("display", "none");
+    setTimeout(() => {
+      tweet.slideDown(500);
+      tweet.css("display", "block");
+      tweet
+        .css("opacity", 0)
+        .animate({
+          queue: true,
+          opacity: 1
+        }, {
+          duration: 500
+        });
+    }, delay);
+  } else {
+    setTimeout(() => {
+      tweet
+        .animate({
+          queue: true,
+          opacity: 0
+        }, {
+          duration: 400
+        });
+      tweet.slideUp(400);
+      setTimeout(() => {
+        tweet.remove();
+      }, 800);
+    }, delay);
+  }
+
 };
 
 // Displays the new tweet form in an animation if show is true, hides it otherwise
@@ -284,9 +314,10 @@ $(document).ready(() => {
 
   const form = $("#new-tweet form");
   const scrollBtn = $("#scroll-btn");
+  const welcomeMsg = "Welcome to Tweeter! I hope you have as much fun with this as I did while making it! ✌️<br><br>You can check out this project on <a href=\"https://github.com/ahhreggi/tweeter\" target=\"_blank\">GitHub</a>. :)";
+  let welcomeCooldown = false;
+  let verifiedTweets = true;
   let composeVisible = true;
-  let shownWelcomeMsg = false;
-  let onCooldown = false;
 
   form.css("opacity", 0);
   form.css("display", "none");
@@ -294,7 +325,7 @@ $(document).ready(() => {
   // Load and render existing tweets
   loadTweets();
 
-  // Animate initial loading of tweets
+  // Animate initial loading of tweets, form, and welcome message
   const feed = $("#all-tweets");
   feed.css("opacity", 0);
   feed.css("display", "none");
@@ -307,45 +338,36 @@ $(document).ready(() => {
     }, {
       duration: 400
     });
-
   setTimeout(() => {
     $(document).scrollTop(0);
-    toggleForm(form, true, 800, 500);
+    toggleForm(form, true, 600, 500);
   }, 100);
+  setTimeout(() => {
+    submitReggiTweet(welcomeMsg);
+  }, 1500);
 
   // Display a client-sided welcome tweet when the user clicks the nav logo
   $("#logo").on("click", () => {
 
-    if (!onCooldown) {
-      onCooldown = true;
+    if (!welcomeCooldown) {
+      welcomeCooldown = true;
       setTimeout(() => {
-        const msg = "Welcome to Tweeter! I hope you have as much fun with this as I did while making it! ✌️<br><br>If you'd like to see the project on GitHub, you can do so <a href=\"https://github.com/ahhreggi/tweeter\" target=\"_blank\">here</a>.";
-        submitReggiTweet(msg);
+        submitReggiTweet(welcomeMsg);
       }, 300);
       setTimeout(() => {
-        onCooldown = false;
+        welcomeCooldown = false;
       }, 1000);
     }
 
-    shownWelcomeMsg = true;
-
-  });
-
-  // Display a client-sided welcome tweet when the user first starts typing
-  form.on("input", () => {
-
-    if (!shownWelcomeMsg) {
-      const msg = "Welcome to Tweeter! I hope you have as much fun with this as I did while making it! ✌️<br><br>If you'd like to see the project on GitHub, you can do so <a href=\"https://github.com/ahhreggi/tweeter\" target=\"_blank\">here</a>.";
-      submitReggiTweet(msg);
-      shownWelcomeMsg = true;
-    }
+    verifiedTweets = true;
 
   });
 
   // Listen for new tweet form submission then submit and render the tweet data
   form.on("submit", (event) => {
 
-    submitTweetHandler(event, bobRossMode); // eslint-disable-line
+    submitTweetHandler(event, bobRossMode, verifiedTweets); // eslint-disable-line
+    verifiedTweets = false;
 
   });
 
