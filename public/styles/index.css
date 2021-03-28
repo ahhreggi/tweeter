@@ -384,8 +384,8 @@ nav {
   padding: 1px;
   border: 1px;
   cursor: pointer;
-  -webkit-filter: saturate(100%) brightness(70%);
-          filter: saturate(100%) brightness(70%);
+  -webkit-filter: grayscale(50%) brightness(100%);
+          filter: grayscale(50%) brightness(100%);
 }
 
 .tweet:hover {
@@ -400,13 +400,13 @@ nav {
 }
 
 .tweet:hover footer img {
-  -webkit-filter: saturate(100%) brightness(50%);
-          filter: saturate(100%) brightness(50%);
+  -webkit-filter: brightness(100%);
+          filter: brightness(100%);
 }
 
 .tweet:hover footer img:hover {
-  -webkit-filter: saturate(100%) brightness(70%);
-          filter: saturate(100%) brightness(70%);
+  -webkit-filter: brightness(150%);
+          filter: brightness(150%);
 }
 
 .tweet:hover footer img:active {
