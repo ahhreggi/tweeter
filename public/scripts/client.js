@@ -313,11 +313,6 @@ $(document).ready(() => {
     toggleForm(form, true, 800, 500);
   }, 100);
 
-  // Focus the input field whenever the user clicks anywhere on the form
-  form.on("click", () => {
-    focusInput(0);
-  });
-
   // Display a client-sided welcome tweet when the user clicks the nav logo
   $("#logo").on("click", () => {
 
