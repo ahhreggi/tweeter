@@ -255,7 +255,7 @@ const focusInput = (delay = 500) => {
 
 };
 
-// Submit a random tweet
+// Submits a client-sided welcome tweet
 const submitWelcomeTweet = () => {
 
   const tweetMessage = `Welcome to Tweeter! Check out this project on GitHub <a href="https://github.com/ahhreggi/tweeter" target="_blank">here</a>.`;
