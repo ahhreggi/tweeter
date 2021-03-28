@@ -520,13 +520,18 @@ const getOneQuote = (array = true) => {
 
 };
 
-// Returns a message consisting of 1+ quotes
+// Returns an array consisting of words from of 1+ quotes
 const getQuote = () => {
   let message = [];
   let quote = getOneQuote();
+  let quoteLog = [quote];
   while (message.concat(quote).join(" ").length < 140) {
     message = message.concat(quote);
     quote = getOneQuote();
+    while (quoteLog.includes(quote)) {
+      quote = getOneQuote();
+    }
+    quoteLog.push(quote);
   }
   return message;
 };
@@ -560,7 +565,6 @@ $(document).ready(() => {
     quote = getQuote();
     quoteIndex = 0;
     message = [];
-    clearForm(); // eslint-disable-line
 
   };
 
@@ -634,6 +638,7 @@ $(document).ready(() => {
         const messageLength = message.join(" ").length;
         if (messageLength === 0) {
           resetBobRoss();
+          clearForm(); // eslint-disable-line
         }
 
         // Add to the message until the limit is reached, otherwise, stop further input
@@ -664,6 +669,7 @@ $(document).ready(() => {
     if (bobRossMode) {
       if (event.key === "Escape") {
         resetBobRoss();
+        clearForm(); // eslint-disable-line
       }
 
     }
