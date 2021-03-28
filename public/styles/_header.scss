@@ -24,16 +24,17 @@
     margin-bottom: 10px;
     border: 2px solid $title;
     border-radius: 100%;
-    transition: 0.2s;
 
     &:hover {
+      padding: 1px;
+      border: none;
       box-shadow: 0px 0px 10px $shadow;
       cursor: pointer;
       filter: none;
     }
 
     &:active {
-      border-color: rgba(255, 255, 255, 0.5);
+      padding: 0px;
     }
 
   }
