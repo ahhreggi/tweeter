@@ -587,8 +587,8 @@ $(document).ready(function() {
   const toggleInstructions = (show) => {
 
     if (show) {
-      instructions.slideDown(500);
       instructions
+        .slideDown(500)
         .css("opacity", 0)
         .animate({
           queue: true,
@@ -605,8 +605,8 @@ $(document).ready(function() {
           opacity: 0
         }, {
           duration: 500
-        });
-      instructions.slideUp(500);
+        })
+        .slideUp(500);
       showingInstructions = false;
     }
 

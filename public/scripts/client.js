@@ -207,9 +207,9 @@ const animateTweet = (tweet, hide = false, delay = 200) => {
   if (!hide) {
     tweet.css("display", "none");
     setTimeout(() => {
-      tweet.slideDown(500);
-      tweet.css("display", "block");
       tweet
+        .slideDown(500)
+        .css("display", "block")
         .css("opacity", 0)
         .animate({
           queue: true,
@@ -226,8 +226,8 @@ const animateTweet = (tweet, hide = false, delay = 200) => {
           opacity: 0
         }, {
           duration: 400
-        });
-      tweet.slideUp(400);
+        })
+        .slideUp(400);
       setTimeout(() => {
         tweet.remove();
       }, 800);
@@ -241,8 +241,8 @@ const toggleForm = (form, show = true, duration = 400, delay = 0) => {
 
   setTimeout(() => {
     if (show) {
-      form.slideDown(duration);
       form
+        .slideDown(duration)
         .css("opacity", 0)
         .animate({
           queue: true,
@@ -259,8 +259,8 @@ const toggleForm = (form, show = true, duration = 400, delay = 0) => {
           opacity: 0
         }, {
           duration: duration
-        });
-      form.slideUp(duration);
+        })
+        .slideUp(duration);
       clearForm();
     }
   }, delay);
@@ -321,19 +321,19 @@ $(document).ready(function() {
   let verifiedTweets = true;
   let composeVisible = true;
 
-  form.css("opacity", 0);
-  form.css("display", "none");
+  form
+    .css("opacity", 0)
+    .css("display", "none");
 
   // Load and render existing tweets
   loadTweets();
 
   // Animate initial loading of tweets, form, and welcome message
   const feed = $("#all-tweets");
-  feed.css("opacity", 0);
-  feed.css("display", "none");
-  feed.slideDown(800);
   feed
     .css("opacity", 0)
+    .css("display", "none")
+    .slideDown(800)
     .animate({
       queue: true,
       opacity: 1
@@ -389,8 +389,9 @@ $(document).ready(function() {
 
     // Show the corner compose button when they scroll below a certain position
     if (position > 250) {
-      scrollBtn.css("visibility", "visible");
-      scrollBtn.fadeIn(200);
+      scrollBtn
+        .css("visibility", "visible")
+        .fadeIn(200);
     } else {
       scrollBtn.fadeOut(200);
     }
