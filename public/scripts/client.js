@@ -316,7 +316,7 @@ $(document).ready(function() {
 
   const form = $("#new-tweet form");
   const scrollBtn = $("#scroll-btn");
-  const welcomeMsg = "Welcome to Tweeter! I hope you have as much fun with this as I did while making it! ✌️<br><br>You can check out this project on <a href=\"https://github.com/ahhreggi/tweeter\" target=\"_blank\">GitHub</a>. :)";
+  const welcomeMsg = "Welcome to Tweeter! I hope you have as much fun with this as I did while making it! ✌️<br><br>If you're interested, check out this project on <a href=\"https://github.com/ahhreggi/tweeter\" target=\"_blank\">GitHub</a>! :)";
   let welcomeCooldown = false;
   let verifiedTweets = true;
   let composeVisible = true;
