@@ -513,27 +513,41 @@ const quotes = [
 ];
 
 // Returns a random Bob Ross quote
-const getOneQuote = (array = true) => {
+const getOneQuote = () => {
 
-  const quote = quotes[Math.floor(Math.random() * quotes.length)];
-  return array ? quote.split(" ").map(word => word + " ") : quote;
+  return quotes[Math.floor(Math.random() * quotes.length)];
 
 };
 
-// Returns an array consisting of words from of 1+ quotes
-const getQuote = () => {
-  let message = [];
-  let quote = getOneQuote();
-  let quoteLog = [quote];
-  while (message.concat(quote).join(" ").length < 138) {
-    message = message.concat(quote);
-    quote = getOneQuote();
-    while (quoteLog.includes(quote)) {
-      quote = getOneQuote();
+// Returns an array consisting of words from of 1+ unique quotes
+const getQuote = (maxLength = 138) => {
+
+  // Get the initial quote
+  const quotes = [getOneQuote()];
+
+  // Attempt to add more quotes while the message is below the max length (limit: 10)
+  let attempts = 10;
+  while (quotes.join(" ").length < maxLength && attempts) {
+
+    // If the new quote would cause the message to exceed the max length, attempt to find a shorter quote (limit: 10)
+    let tries = 10;
+    let nextQuote = getOneQuote();
+    while (quotes.concat(nextQuote).join(" ").length > maxLength && tries) {
+      nextQuote = getOneQuote();
+      tries--;
     }
-    quoteLog.push(quote);
+
+    // Check that the new quote is unique and results in a message within the length limit
+    if (quotes.concat(nextQuote).join(" ").length < maxLength && !quotes.includes(nextQuote)) {
+      quotes.push(nextQuote);
+    }
+
+    attempts--;
+
   }
-  return message;
+
+  return quotes.join(" ").split(" ");
+
 };
 
 // Move cursor to the end of the input field
