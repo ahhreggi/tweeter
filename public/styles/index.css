@@ -421,6 +421,10 @@ nav {
   background-color: #f9fcff;
 }
 
+.verified p {
+  border-color: #374a8b;
+}
+
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
