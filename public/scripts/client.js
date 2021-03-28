@@ -135,10 +135,10 @@ const fetchTweetData = (form, loaderFunc, useBobRoss = false, hideVerifiedTweets
 
     // Submit a post request with the tweet data
     $.ajax({
-      url: "/tweets",
-      method: "POST",
-      data: data
-    })
+        url: "/tweets",
+        method: "POST",
+        data: data
+      })
       .then(() => {
         clearForm();
         // Reload all tweets (to update timestamps)
@@ -160,9 +160,9 @@ const loadTweets = (recentlyTweeted = false, hideVerifiedTweets = false) => {
 
   // Retrieve the array of tweets as JSON
   $.ajax({
-    url: "/tweets",
-    method: "GET"
-  })
+      url: "/tweets",
+      method: "GET"
+    })
     .then(tweets => {
       // Hide verified tweets
       if (hideVerifiedTweets) {
@@ -310,7 +310,7 @@ const submitReggiTweet = (tweetMessage) => {
 
 };
 
-$(document).ready(() => {
+$(document).ready(function() {
 
   const form = $("#new-tweet form");
   const scrollBtn = $("#scroll-btn");
@@ -347,7 +347,7 @@ $(document).ready(() => {
   }, 1500);
 
   // Display a client-sided welcome tweet when the user clicks the nav logo
-  $("#logo").on("click", () => {
+  $("#logo").on("click", function() {
 
     if (!welcomeCooldown) {
       welcomeCooldown = true;

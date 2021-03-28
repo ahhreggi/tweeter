@@ -559,7 +559,7 @@ const focusEndInput = () => {
 
 let bobRossMode = true;
 
-$(document).ready(() => {
+$(document).ready(function() {
 
   const inputField = $("#tweet-text-input");
   const bobRoss = $("#bob-ross");
@@ -636,7 +636,7 @@ $(document).ready(() => {
 
   });
 
-  // If bobRossMode is enabled, replace the user's input with Bob Ross quotes
+  // If Bob Ross mode is enabled, replace the user's input with Bob Ross quotes
   inputField.on("input", function(event) {
 
     const inputType = event.originalEvent.inputType;
@@ -693,7 +693,7 @@ $(document).ready(() => {
   });
 
   // Hide the instructions when the user clicks on them
-  $("#profile-header p").on("click", () => {
+  $("#profile-header p").on("click", function() {
 
     if (showingInstructions) {
       toggleInstructions(false);
@@ -703,7 +703,7 @@ $(document).ready(() => {
   });
 
   // Reset the quote when a tweet is submitted
-  $("#new-tweet form").on("submit", () => {
+  $("#new-tweet form").on("submit", function() {
 
     if (bobRossMode) {
       resetBobRoss();
@@ -712,7 +712,7 @@ $(document).ready(() => {
   });
 
   // Show/hide the instructions tooltip on mouse enter/leave
-  $("#profile-header").on("mouseenter", () => {
+  $("#profile-header").on("mouseenter", function() {
 
     if (showingInstructions) {
       toolTip.css("opacity", "0.8");
@@ -720,7 +720,7 @@ $(document).ready(() => {
 
   });
 
-  $("#profile-header").on("mouseleave", () => {
+  $("#profile-header").on("mouseleave", function() {
 
     if (showingInstructions) {
       toolTip.css("opacity", "0");
