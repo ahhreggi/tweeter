@@ -560,11 +560,15 @@ $(document).ready(() => {
   toolTip.css("opacity", "1");
 
   // Resets the current message
-  const resetBobRoss = () => {
+  const resetBobRoss = (clear=false) => {
 
     quote = getQuote();
     quoteIndex = 0;
     message = [];
+
+    if (clear) {
+      clearForm(); // eslint-disable-line
+    }
 
   };
 
@@ -600,8 +604,7 @@ $(document).ready(() => {
   // If the user clicks Bob Ross' profile picture, toggle Bob Ross mode
   bobRoss.on("click", function() {
 
-    resetBobRoss();
-    clearForm(); // eslint-disable-line
+    resetBobRoss(true);
 
     if (bobRossMode) {
       bobRoss.css("filter", "grayscale(50%)");
@@ -638,8 +641,7 @@ $(document).ready(() => {
         // If the user removes the entire message, get a new quote
         const messageLength = message.join(" ").length;
         if (messageLength === 0) {
-          resetBobRoss();
-          clearForm(); // eslint-disable-line
+          resetBobRoss(true);
         }
 
         // Add to the message until the limit is reached, otherwise, stop further input
@@ -669,8 +671,7 @@ $(document).ready(() => {
 
     if (bobRossMode) {
       if (event.key === "Escape") {
-        resetBobRoss();
-        clearForm(); // eslint-disable-line
+        resetBobRoss(true);
       }
 
     }
