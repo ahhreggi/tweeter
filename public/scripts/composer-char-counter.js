@@ -61,7 +61,7 @@ const toggleDisable = (button, disable) => {
 
 };
 
-$(document).ready(() => {
+$(document).ready(function() {
 
   // Dynamically update the counter as a user types
   $("#tweet-text-input").on("input", function() {
