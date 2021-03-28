@@ -512,7 +512,7 @@ const quotes = [
   "Zooooom... you've gotta make the little noises or it doesn't work right."
 ];
 
-const emojiList = ["🎨", "💚", "🤟", "✌️", "👌", "🙏", "👊", "👍", "😉", "😀", "😲", "😭", "🤔", "🤣", "😂", "😆", "🤪", "🤗", "😌", "😌", "🤭", "🤯", "💯", "🔥"];
+const emojiList = ["🎨", "💚", "🤟", "✌️", "👌", "🙏", "👊", "👍", "😉", "😀", "😲", "😭", "🤔", "🤣", "😂", "😆", "🤪", "🤗", "😌", "😌", "🤭", "💯", "🔥"];
 
 // Returns a random Bob Ross quote
 const getOneQuote = (maxLength = null, options = quotes) => {
