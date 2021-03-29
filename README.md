@@ -3,7 +3,7 @@
 <img src="public/images/bobross.png" alt="tweeter" width="150px">
 <p>
 <h1>Tweeter: The Joy of Tweeting</h1>
-<p>A single page Twitter clone that allows users to tweet like Bob Ross.
+<p>A single page Twitter clone that allows users to tweet like Bob Ross
 </p>
 
 <p>Built with <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, HTML, CSS/<a href="https://sass-lang.com/">SASS</a>, JavaScript, <a href="https://jquery.com">jQuery</a>, and hosted with <a href="https://www.heroku.com/">Heroku</a></p>
