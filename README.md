@@ -6,11 +6,7 @@
 <p>A single page Twitter clone that allows users to tweet like Bob Ross
 </p>
 
-<p>Built with <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, HTML, CSS/<a href="https://sass-lang.com/">SASS</a>, JavaScript, <a href="https://jquery.com">jQuery</a>, and hosted with <a href="https://www.heroku.com/">Heroku</a></p>
-
-<b><a href="https://ahhreggi-tweeter.herokuapp.com/" target="_blank">
-   » View Live Demo «
-</a></b>
+<p>Built with <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, HTML, CSS/<a href="https://sass-lang.com/">SASS</a>, JavaScript, and <a href="https://jquery.com">jQuery</a>
 
 </div>
 
@@ -22,7 +18,7 @@
 <i>"There are no mistakes, only happy accidents."</i> - Bob Ross
 </p>
 
-<b>[Tweeter](https://ahhreggi-tweeter.herokuapp.com/)</b> is a simple, single-page Twitter clone that allows users to post tweets... with a twist. As text is entered, the input is <i>automatically replaced</i> by [Bob Ross](https://en.wikipedia.org/wiki/Bob_Ross) quotes. Tweets may consist of multiple quotes, meaning each one is bound to be unique. It might sound a little crazy, but this actually works surprisingly well!
+<b>Tweeter</b> is a simple, single-page Twitter clone that allows users to post tweets... with a twist. As text is entered, the input is <i>automatically replaced</i> by [Bob Ross](https://en.wikipedia.org/wiki/Bob_Ross) quotes. Tweets may consist of multiple quotes, meaning each one is bound to be unique. It might sound a little crazy, but this actually works surprisingly well!
 
 <b>Built with <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, HTML, CSS/[SASS](https://sass-lang.com/), JavaScript, and [jQuery](https://jquery.com/).</b>
 
